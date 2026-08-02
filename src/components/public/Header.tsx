@@ -35,17 +35,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = location.pathname === "/";
-
-  // const setLogo = isHome
-  //   ? scroll
-  //     ? "/logo/logo-light.png"
-  //     : "/logo/logo-dark.png"
-  //   : "/logo/logo-light.png";
-
-  const impactBg = location.pathname.includes("/impact");
-  const btnBg = isHome ? (scroll ? "outline" : "light") : "primary";
-  const variant = isHome ? (!scroll ? "outline" : "secondary") : "secondary";
+  const isDefault = ["/", "/about"].includes(location.pathname);
+  const isListings = location.pathname.includes("/listings");
+  const btnBg = isDefault ? (scroll ? "outline" : "light") : "primary";
+  const variant = isDefault ? (!scroll ? "outline" : "secondary") : "secondary";
 
   return (
     <Box>
@@ -53,11 +46,7 @@ const Header = () => {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: scroll
-            ? impactBg
-              ? "transparent"
-              : COLORS.light
-            : "transparent",
+          backgroundColor: scroll ? COLORS.light : "transparent",
           backdropFilter: scroll ? "blur(12px)" : "none",
           borderBottom: scroll ? "1px solid rgba(255,255,255,0.05)" : "none",
           height: "70px",
@@ -108,11 +97,14 @@ const Header = () => {
                     to={item.path}
                     sx={{
                       textDecoration: "none",
-                      color: isActive ? Palette.primary.default : COLORS.dark,
+                      color: isActive
+                        ? Palette.primary.default
+                        : isListings
+                          ? COLORS.light
+                          : COLORS.dark,
                       fontWeight: 600,
                       fontSize: "0.75rem",
                       letterSpacing: "0.05em",
-
                       fontFamily: FontFamily.accent,
                       transition: "all 0.3s ease",
                       position: "relative",
@@ -154,7 +146,7 @@ const Header = () => {
                   to={"/auth/onboarding"}
                   shape="rounded"
                   fullWidth
-                  variant={btnBg}
+                  variant={isListings ? "success" : btnBg}
                   sx={{
                     width: { xs: "100%", sm: "auto" },
                     whiteSpace: "nowrap",
@@ -270,7 +262,7 @@ const Header = () => {
             }}
             onClick={() => handleGetStarted()}
           >
-            Update Administrator
+            List Property
           </AppButton>
         </Box>
       </Drawer>

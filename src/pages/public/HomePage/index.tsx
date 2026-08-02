@@ -5,6 +5,7 @@ import {
   ProcessSteps,
   SolutionsSection,
   StatsBar,
+  TestimonialsSection,
 } from "../../../components";
 
 const HomePage = () => {
@@ -28,6 +29,10 @@ const HomePage = () => {
 
       <Box>
         <SolutionsSection />
+      </Box>
+
+      <Box>
+        <TestimonialsSection />
       </Box>
     </>
   );

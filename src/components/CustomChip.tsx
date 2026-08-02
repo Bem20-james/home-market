@@ -13,23 +13,25 @@ const CustomChip = ({ label, icon }: CustomChipProps) => {
     <Box
       sx={{
         backgroundColor: `${COLORS.primary}70`,
-        padding: "5px 10px",
+        padding: "5px 20px",
         borderRadius: "20px",
         width: "fit-content",
         display: "flex",
         alignItems: "center",
         gap: "6px",
+        elevation: 3,
       }}
     >
       {icon && <Box sx={{ display: "flex", color: COLORS.dark }}>{icon}</Box>}
 
       <Typography
         sx={{
-          fontFamily: FontFamily.primary,
-          fontWeight: 800,
+          fontFamily: FontFamily.mono,
+          fontWeight: 700,
           fontSize: ".7rem",
           color: COLORS.background,
           textTransform: "uppercase",
+          letterSpacing: "0.1em",
         }}
       >
         {label}

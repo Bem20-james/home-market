@@ -89,7 +89,7 @@ const VARIANT_STYLES: Record<ButtonVariant, SystemStyleObject<Theme>> = {
   secondary: {
     background: "#263238",
     color: "#FFFFFF",
-    border: "1px solid rgba(255,255,255,0.12)",
+    border: "none",
     backdropFilter: "blur(8px)",
     "&:hover": {
       background: "#2d3235",
@@ -161,7 +161,7 @@ const SIZE_STYLES: Record<ButtonSize, SystemStyleObject<Theme>> = {
 };
 
 const SHAPE_STYLES: Record<ButtonShape, SystemStyleObject<Theme>> = {
-  rounded: { borderRadius: "10px" },
+  rounded: { borderRadius: "8px" },
   pill: { borderRadius: "100px" },
   square: { borderRadius: "3px" },
 };

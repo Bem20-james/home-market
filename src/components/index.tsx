@@ -8,3 +8,6 @@ export { default as CustomInput } from "./CustomInput";
 export { default as CustomButton } from "./CustomButton";
 export { default as FeaturedListings } from "./public/FeaturedListings";
 export { default as SolutionsSection } from "./public/SolutionSection";
+export { default as TestimonialsSection } from "./public/TestimonialSection";
+export { default as CustomChip } from "./CustomChip";
+export { default as HeroCard } from "./public/HeroCard";

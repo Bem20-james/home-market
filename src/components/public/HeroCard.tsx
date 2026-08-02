@@ -14,12 +14,11 @@ const HeroCard = () => (
       borderRadius: "20px",
       bgcolor: "#f5f5f5",
       p: "18px 22px",
-      maxWidth: 300,
+      maxWidth: 250,
       width: "max-content",
       boxShadow: "0px 12px 40px rgba(0,0,0,0.10)",
     }}
   >
-    {/* Top row: avatar + title */}
     <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1.5 }}>
       <Avatar
         sx={{

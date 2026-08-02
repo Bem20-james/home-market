@@ -172,3 +172,53 @@ export const LISTINGS: Listing[] = [
     sqft: 2800,
   },
 ];
+
+export const ORBIT_IMAGES = [
+  { src: "/listings/kitchen-dark.jpg", alt: "Modern kitchen" },
+  { src: "/listings/bedroom-light.jpg", alt: "Bright bedroom" },
+  { src: "/listings/living-garden.jpg", alt: "Garden living room" },
+  { src: "/listings/hallway-city.jpg", alt: "City view" },
+];
+
+export const TESTIMONIALS = [
+  {
+    id: 1,
+    quote:
+      "As a diaspora investor, finding a reliable platform to list my properties in Lagos was a nightmare until I found this. The verification process gives both me and my tenants peace of mind.",
+    name: "Adebayo O.",
+    role: "Property Owner, UK/NG",
+    avatar: "/avatars/adebayo.jpg",
+    stars: 5,
+    tag: "Landlord",
+  },
+  {
+    id: 2,
+    quote:
+      "Found my studio apartment in just 3 days! The direct chat with the landlord helped me negotiate terms that weren't on the listing.",
+    name: "Sarah K.",
+    role: "Tenant, Nairobi",
+    avatar: "/avatars/sarah.jpg",
+    stars: 5,
+    tag: "Landlord",
+  },
+  {
+    id: 3,
+    quote:
+      "We relocated 40 employees to Lagos in one quarter. The corporate dashboard made bulk housing management something our team can actually handle.",
+    name: "Emeka T.",
+    role: "HR Director, Abuja",
+    avatar: "/avatars/emeka.jpg",
+    stars: 5,
+    tag: "Landlord",
+  },
+  {
+    id: 4,
+    quote:
+      "The background checks saved me from renting to a tenant with three prior evictions. I'd never list anywhere else.",
+    name: "Fatima A.",
+    role: "Landlord, Ikoyi",
+    avatar: "/avatars/fatima.jpg",
+    stars: 5,
+    tag: "Landlord",
+  },
+];

@@ -37,3 +37,13 @@ export const COLORS = {
   inkMuted: "#4A5A4C",
   inkLight: "#7A8C7B",
 } as const;
+
+export const tokens = {
+  bg: "#EAF7E1",
+  surface: "#F4FAEE",
+  surfaceHi: "#7BCB4E",
+  ink: "#16291A",
+  sub: "#5B7560",
+  brand: "#3FA34D",
+  brandDark: "#2D7A39",
+};
