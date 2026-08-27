@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import {
   FeaturedListings,
   HeroSection,
+  ListingsImageGrid,
   ProcessSteps,
   SolutionsSection,
   StatsBar,
@@ -33,6 +34,10 @@ const HomePage = () => {
 
       <Box>
         <TestimonialsSection />
+      </Box>
+
+      <Box>
+        <ListingsImageGrid />
       </Box>
     </>
   );

@@ -222,3 +222,98 @@ export const TESTIMONIALS = [
     tag: "Landlord",
   },
 ];
+
+// ─── Data — swap image paths for real assets ──────────────────────────────────
+export interface GridItem {
+  id: number;
+  label: string;
+  sublabel: string;
+  image: string;
+  // grid placement
+  colSpan?: number;
+  rowSpan?: number;
+}
+
+export const PAGES: GridItem[][] = [
+  [
+    {
+      id: 1,
+      label: "100M & Below",
+      sublabel: "340 properties",
+      image: "/locations/budget-property.jpg",
+      rowSpan: 2,
+    },
+    {
+      id: 2,
+      label: "Lagos",
+      sublabel: "1,240 listings",
+      image: "/locations/lagos.jpg",
+    },
+    {
+      id: 3,
+      label: "Ibadan",
+      sublabel: "418 listings",
+      image: "/locations/ibadan.jpg",
+      rowSpan: 2,
+    },
+    {
+      id: 4,
+      label: "Kano",
+      sublabel: "209 listings",
+      image: "/locations/kano.jpg",
+    },
+    {
+      id: 5,
+      label: "Abuja",
+      sublabel: "872 listings",
+      image: "/locations/abuja.jpg",
+    },
+    {
+      id: 6,
+      label: "Port Harcourt",
+      sublabel: "314 listings",
+      image: "/locations/port-harcourt.jpg",
+    },
+  ],
+  // Page 2
+  [
+    {
+      id: 7,
+      label: "Enugu",
+      sublabel: "192 listings",
+      image: "/locations/enugu.jpg",
+      rowSpan: 2,
+    },
+    {
+      id: 8,
+      label: "Calabar",
+      sublabel: "156 listings",
+      image: "/locations/calabar.jpg",
+    },
+    {
+      id: 9,
+      label: "Warri",
+      sublabel: "203 listings",
+      image: "/locations/warri.jpg",
+      rowSpan: 2,
+    },
+    {
+      id: 10,
+      label: "Owerri",
+      sublabel: "141 listings",
+      image: "/locations/owerri.jpg",
+    },
+    {
+      id: 11,
+      label: "Benin City",
+      sublabel: "178 listings",
+      image: "/locations/benin.jpg",
+    },
+    {
+      id: 12,
+      label: "Asaba",
+      sublabel: "98 listings",
+      image: "/locations/asaba.jpg",
+    },
+  ],
+];

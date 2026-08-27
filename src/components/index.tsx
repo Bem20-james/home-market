@@ -11,3 +11,6 @@ export { default as SolutionsSection } from "./public/SolutionSection";
 export { default as TestimonialsSection } from "./public/TestimonialSection";
 export { default as CustomChip } from "./CustomChip";
 export { default as HeroCard } from "./public/HeroCard";
+export { default as MissionsSection } from "./public/MissionsSection";
+export { default as AboutSection } from "./public/AboutSection";
+export { default as ListingsImageGrid } from "./public/ListingsImageGrid";
