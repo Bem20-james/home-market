@@ -67,7 +67,7 @@ const ListingPage = () => {
             <Typography
               component="h2"
               sx={{
-                fontFamily: FontFamily.mono,
+                fontFamily: FontFamily.default,
                 fontSize: { xs: "2rem", md: "2.4rem", lg: "4.5rem" },
                 fontWeight: 700,
                 fontStyle: "normal",

@@ -54,7 +54,7 @@ const MissionSection = () => (
         sx={{
           fontWeight: 800,
           fontSize: { xs: "2rem", sm: "3rem", md: "5rem" },
-          fontFamily: FontFamily.mono,
+          fontFamily: FontFamily.default,
           letterSpacing: "-0.03em",
           lineHeight: 1.18,
           color: COLORS.ink,

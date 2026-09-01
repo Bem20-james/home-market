@@ -207,7 +207,7 @@ const SolutionsSection = () => (
             letterSpacing: "-0.02em",
             color: COLORS.ink,
             fontSize: { xs: "2rem", md: "3rem" },
-            fontFamily: FontFamily.mono,
+            fontFamily: FontFamily.default,
           }}
         >
           Solutions for Everyone

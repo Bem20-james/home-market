@@ -120,7 +120,7 @@ const AboutSection = () => {
             <Typography
               component="p"
               sx={{
-                fontFamily: FontFamily.mono,
+                fontFamily: FontFamily.default,
                 fontSize: { xs: "1.5rem", md: "2rem" },
                 fontWeight: 800,
                 fontStyle: "normal",

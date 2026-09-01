@@ -26,7 +26,7 @@ const CustomChip = ({ label, icon }: CustomChipProps) => {
 
       <Typography
         sx={{
-          fontFamily: FontFamily.mono,
+          fontFamily: FontFamily.default,
           fontWeight: 700,
           fontSize: ".7rem",
           color: COLORS.background,

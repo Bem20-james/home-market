@@ -83,7 +83,7 @@ const HeroSection = () => {
             <Box
               component="span"
               sx={{
-                fontFamily: FontFamily.mono,
+                fontFamily: FontFamily.default,
                 fontSize: { xs: "2rem", md: "2.4rem", lg: "4rem" },
                 fontWeight: 700,
                 fontStyle: "normal",

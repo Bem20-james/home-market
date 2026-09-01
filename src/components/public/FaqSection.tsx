@@ -195,7 +195,7 @@ const FAQSection = () => {
             sx={{
               fontWeight: 800,
               fontSize: { xs: "1.85rem", md: "3.5rem" },
-              fontFamily: FontFamily.mono,
+              fontFamily: FontFamily.default,
               letterSpacing: "-0.03em",
               color: COLORS.ink,
               mb: 1.25,

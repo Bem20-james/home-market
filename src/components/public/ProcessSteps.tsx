@@ -27,7 +27,7 @@ const ProcessSteps = () => {
               letterSpacing: "-0.02em",
               color: COLORS.ink,
               fontSize: { xs: "2rem", md: "4rem" },
-              fontFamily: FontFamily.mono,
+              fontFamily: FontFamily.default,
             }}
           >
             Your Journey to a New Home

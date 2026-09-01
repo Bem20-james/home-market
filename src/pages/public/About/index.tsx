@@ -115,7 +115,7 @@ const AboutPage = () => {
               <Typography
                 component="p"
                 sx={{
-                  fontFamily: FontFamily.mono,
+                  fontFamily: FontFamily.default,
                   fontSize: { xs: "1.5rem", md: "2rem" },
                   fontWeight: 800,
                   fontStyle: "normal",
@@ -310,7 +310,7 @@ const AboutPage = () => {
               sx={{
                 fontWeight: 800,
                 fontSize: { xs: "1.85rem", md: "3.5rem" },
-                fontFamily: FontFamily.mono,
+                fontFamily: FontFamily.default,
                 letterSpacing: "-0.03em",
                 color: COLORS.ink,
                 mb: 1.25,

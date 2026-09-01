@@ -1,4 +1,5 @@
 import { Box, Typography, Divider, Stack } from "@mui/material";
+import { FontFamily } from "../../config/fonts";
 
 const stats = [
   { value: "10k+", label: "Active Listings" },
@@ -56,7 +57,7 @@ export default function StatsBar() {
             <Typography
               component="span"
               sx={{
-                fontFamily: "monospace",
+                fontFamily: FontFamily.secondary,
                 fontWeight: 700,
                 fontSize: { xs: 18, md: 19 },
                 color: "#3b6d11",

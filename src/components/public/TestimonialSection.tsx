@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
                 sx={{
                   fontWeight: 800,
                   fontSize: { xs: "2rem", md: "4rem" },
-                  fontFamily: FontFamily.mono,
+                  fontFamily: FontFamily.default,
                   letterSpacing: "-0.03em",
                   lineHeight: 1.15,
                   color: COLORS.ink,
