@@ -18,7 +18,7 @@ import { MenuRounded } from "@mui/icons-material";
 import { FontFamily } from "../../config/fonts";
 import { navItems } from "./data";
 import { COLORS, Palette } from "../../config/colors";
-import AppButton from "../CustomButton";
+import CustomButton from "../CustomButton";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -142,7 +142,7 @@ const Header = () => {
               }}
             >
               <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
-                <AppButton
+                <CustomButton
                   to={"/auth/onboarding"}
                   shape="rounded"
                   fullWidth
@@ -154,8 +154,8 @@ const Header = () => {
                   onClick={() => handleGetStarted()}
                 >
                   List Property
-                </AppButton>
-                <AppButton
+                </CustomButton>
+                <CustomButton
                   to={"/auth/login"}
                   shape="rounded"
                   fullWidth
@@ -167,7 +167,7 @@ const Header = () => {
                   }}
                 >
                   Login
-                </AppButton>
+                </CustomButton>
               </Box>
 
               <IconButton
@@ -251,7 +251,7 @@ const Header = () => {
         <Box sx={{ mt: "auto", pb: 4 }}>
           <Divider sx={{ borderColor: "rgba(255,255,255,0.1)", mb: 4 }} />
 
-          <AppButton
+          <CustomButton
             to={"/auth/onboarding"}
             shape="rounded"
             fullWidth
@@ -263,7 +263,7 @@ const Header = () => {
             onClick={() => handleGetStarted()}
           >
             List Property
-          </AppButton>
+          </CustomButton>
         </Box>
       </Drawer>
     </Box>

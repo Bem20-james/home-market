@@ -48,7 +48,7 @@ const AboutSection = () => {
             >
               <Box
                 component="img"
-                src="/about/hero.jpg"
+                src="/about/stock1.jpg"
                 alt="Members of the team behind the platform"
                 sx={{
                   width: "100%",

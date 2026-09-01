@@ -19,7 +19,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { COLORS, Palette } from "../../config/colors";
 
 // ─── Styled Components ───────────────────────────────────────────────────────

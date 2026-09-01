@@ -37,11 +37,19 @@ const MissionSection = () => (
     />
 
     <Container maxWidth="md" sx={{ position: "relative", zIndex: 2 }}>
-      <Box sx={{ mb: 3, display: "inline-flex", alignItems: "center" }}>
+      <Box
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1000"
+        sx={{ mb: 3, display: "inline-flex", alignItems: "center" }}
+      >
         <CustomChip label="Our Mission" />
       </Box>
 
       <Typography
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1000"
         component="h2"
         sx={{
           fontWeight: 800,
@@ -86,6 +94,8 @@ const MissionSection = () => (
       </Typography>
 
       <Typography
+        data-aos="fade-up"
+        data-aos-duration="500"
         sx={{
           fontSize: { xs: 15, md: 16.5 },
           lineHeight: 1.78,
@@ -100,6 +110,8 @@ const MissionSection = () => (
       </Typography>
 
       <Stack
+        data-aos="fade-up"
+        data-aos-duration="500"
         direction={{ xs: "column", md: "row" }}
         spacing={2}
         sx={{

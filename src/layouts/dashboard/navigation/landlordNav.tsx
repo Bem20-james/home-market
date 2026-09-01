@@ -1,58 +1,61 @@
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
-import AddHomeIcon from "@mui/icons-material/AddHome";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import BookOnlineIcon from "@mui/icons-material/BookOnline";
-import PaymentsIcon from "@mui/icons-material/Payments";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import SettingsIcon from "@mui/icons-material/Settings";
+import {
+  MdDashboard,
+  MdHomeWork,
+  MdAddHome,
+  MdVisibility,
+  MdBookOnline,
+  MdPayments,
+  MdVerifiedUser,
+  MdSettings,
+} from "react-icons/md";
+import type { NavItem } from "./types";
 
-export const LANDLORD_NAV = [
+export const LANDLORD_NAV: NavItem[] = [
   {
     label: "Dashboard",
     path: "/dashboard",
-    icon: DashboardIcon,
+    icon: MdDashboard,
     children: [],
   },
   {
     label: "My Properties",
     path: "#",
-    icon: HomeWorkIcon,
+    icon: MdHomeWork,
     children: [
       {
         label: "Add Property",
         path: "/dashboard/add/property",
-        icon: AddHomeIcon,
+        icon: MdAddHome,
       },
       {
         label: "View Properties",
         path: "/dashboard/view/properties",
-        icon: VisibilityIcon,
+        icon: MdVisibility,
       },
     ],
   },
   {
     label: "Bookings",
     path: "/dashboard/view/bookings",
-    icon: BookOnlineIcon,
+    icon: MdBookOnline,
     children: [],
   },
   {
     label: "Payments",
     path: "/dashboard/admin/customers",
-    icon: PaymentsIcon,
+    icon: MdPayments,
     children: [],
   },
   {
     label: "Verifications",
     path: "#",
-    icon: VerifiedUserIcon,
+    icon: MdVerifiedUser,
     children: [],
   },
   {
     label: "Settings",
     path: "#",
-    icon: SettingsIcon,
+    icon: MdSettings,
     children: [],
   },
 ];

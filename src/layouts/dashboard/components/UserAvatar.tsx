@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material";
+import type { MouseEvent } from "react";
 
-function UserAvatar({
-  onClick,
-  initial = "U",
-}: {
-  onClick: () => void;
+interface UserAvatarProps {
+  onClick: (event: MouseEvent<HTMLElement>) => void;
   initial?: string;
-}) {
+}
+
+function UserAvatar({ onClick, initial = "U" }: UserAvatarProps) {
   return (
     <Box
       sx={{

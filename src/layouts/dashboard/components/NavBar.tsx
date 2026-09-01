@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import {
   Box,
   IconButton,
@@ -8,31 +8,44 @@ import {
   MenuItem,
   ListItemIcon,
 } from "@mui/material";
-import { Menu as MenuIcon, Notifications, Logout } from "@mui/icons-material";
-import NotificationsMenu from "./NotificationMenu";
+import {
+  Menu as MenuIcon,
+  Notifications,
+  Logout,
+  WavingHandOutlined,
+} from "@mui/icons-material";
+import NotificationMenu from "./NotificationMenu";
 import UserAvatar from "./UserAvatar";
 import MenuBox from "./MenuBox";
-import { WavingHandOutlined } from "@mui/icons-material";
 import { Palette } from "../../../config/colors";
 import { getTimeGreeting, getFormattedDate } from "../../../utils/functions";
-import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../contexts";
-import { useDispatch } from "react-redux";
 import { useLogout } from "../../../hooks/useAuth";
-import { logout } from "../../../store/authSlice";
 
-const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
-  const dispatch = useDispatch();
+interface NavBarProps {
+  sideNavWidth: number;
+  layoutPadding: number;
+  navHeight: number;
+  onMenuClick: () => void;
+}
 
-  const navigate = useNavigate();
+const NavBar = ({
+  sideNavWidth,
+  layoutPadding,
+  navHeight,
+  onMenuClick,
+}: NavBarProps) => {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [notificationsAnchorEl, setNotificationsAnchorEl] =
+    useState<HTMLElement | null>(null);
+
+  // useUserContext() already returns the User object as `user` - there is
+  // no nested `.user` on it (that was leftover from an earlier bug).
   const { user } = useUserContext();
-  const userInfo = user?.user;
 
-  const logoutUser = useLogout();
+  const logoutMutation = useLogout();
 
-  const handleSettingsClick = (event) => {
+  const handleSettingsClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -40,7 +53,7 @@ const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
     setAnchorEl(null);
   };
 
-  const handleNotificationsClick = (event) => {
+  const handleNotificationsClick = (event: MouseEvent<HTMLElement>) => {
     setNotificationsAnchorEl(event.currentTarget);
   };
 
@@ -48,14 +61,10 @@ const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
     setNotificationsAnchorEl(null);
   };
 
-  const handleLogout = async (e) => {
+  const handleLogout = (e: MouseEvent<HTMLLIElement>) => {
     e.preventDefault();
-
-    logoutUser();
-
-    dispatch(logout());
+    logoutMutation.mutate();
     handleMenuClose();
-    navigate("/login", { replace: true });
   };
 
   return (
@@ -97,7 +106,7 @@ const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
                 textTransform: "capitalize",
               }}
             >
-              {getTimeGreeting()}, {userInfo?.last_name}
+              {getTimeGreeting()}, {user?.last_name}
             </Typography>
             <WavingHandOutlined
               sx={{
@@ -123,7 +132,7 @@ const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
           <MenuBox icon={<Notifications />} count={3} />
         </Box>
 
-        <NotificationsMenu
+        <NotificationMenu
           anchorEl={notificationsAnchorEl}
           open={Boolean(notificationsAnchorEl)}
           onClose={handleNotificationsClose}
@@ -131,7 +140,7 @@ const NavBar = ({ sideNavWidth, layoutPadding, navHeight, onMenuClick }) => {
 
         <UserAvatar
           onClick={handleSettingsClick}
-          initial={userInfo?.last_name?.[0]}
+          initial={user?.last_name?.[0]}
         />
 
         <Menu

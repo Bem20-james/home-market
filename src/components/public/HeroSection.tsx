@@ -62,8 +62,8 @@ const HeroSection = () => {
             variant="h1"
             sx={{
               fontSize: { xs: "4rem", sm: "4rem", md: "5rem" },
-              fontWeight: 600,
-              fontFamily: FontFamily.secondary,
+              fontWeight: 700,
+              fontFamily: FontFamily.default,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
               maxWidth: "1100px",

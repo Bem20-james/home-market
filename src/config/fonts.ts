@@ -3,4 +3,6 @@ export const FontFamily = {
   accent: "Raleway",
   mono: "SFProRounded",
   secondary: '"Chakra Petch", Rubik',
+  default: '"Nunito", sans-serif'
+
 };

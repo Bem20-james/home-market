@@ -1,8 +1,13 @@
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography, Grid, alpha } from "@mui/material";
 import { FontFamily } from "../../../config/fonts";
 import { COLORS } from "../../../config/colors";
 import { CustomChip, HeroCard } from "../../../components";
-import { MissionsSection, AboutSection } from "../../../components";
+import { MissionsSection, AboutSection, FAQSection } from "../../../components";
+import {
+  PeopleRounded,
+  SecurityRounded,
+  VisibilityRounded,
+} from "@mui/icons-material";
 
 // Small inline check icon for the "verified" badge — avoids pulling in an
 // icon library for a single glyph.
@@ -22,6 +27,30 @@ const stats = [
   { value: "40k+", label: "people housed" },
   { value: "12k+", label: "verified listings" },
   { value: "16", label: "cities across Africa" },
+];
+
+const values = [
+  {
+    id: "1",
+    icon: <VisibilityRounded />,
+    title: "Transparency",
+    subtitle:
+      " No hidden fees, no phantom listings. We believe in clear, upfront information at every step of your journey.",
+  },
+  {
+    id: "2",
+    icon: <PeopleRounded />,
+    title: "Inclusion",
+    subtitle:
+      " Making quality housing accessible to everyone. We're building a platform that serves diverse communities fairly.",
+  },
+  {
+    id: "3",
+    icon: <SecurityRounded />,
+    title: "Security",
+    subtitle:
+      "Your trust is our most valuable asset. From data protection to physical verifications, security is built into our DNA.",
+  },
 ];
 
 const AboutPage = () => {
@@ -265,6 +294,93 @@ const AboutPage = () => {
       </Box>
 
       <AboutSection />
+      <Box
+        sx={{
+          bgcolor: COLORS.light,
+          pt: { xs: "100px", md: "132px" },
+          pb: { xs: 10, md: 14 },
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <Container maxWidth={"lg"}>
+          <Box sx={{ textAlign: "center", mb: { xs: 6, md: 7 } }}>
+            <Typography
+              component="h2"
+              sx={{
+                fontWeight: 800,
+                fontSize: { xs: "1.85rem", md: "3.5rem" },
+                fontFamily: FontFamily.mono,
+                letterSpacing: "-0.03em",
+                color: COLORS.ink,
+                mb: 1.25,
+              }}
+            >
+              Core Values
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 15,
+                color: COLORS.textMuted,
+                maxWidth: 550,
+                mx: "auto",
+              }}
+            >
+              The principles that guide our mission to reshape the real estate
+              landscape.
+            </Typography>
+          </Box>
+          <Grid container spacing={3}>
+            {values.map(({ id, icon, title, subtitle }) => (
+              <Grid
+                key={id}
+                size={{ xs: 12, sm: 4, md: 4 }}
+                sx={{
+                  bgcolor: alpha(COLORS.light, 0.7),
+                  p: 4,
+                  borderRadius: 6,
+                }}
+              >
+                <Box>
+                  <Box
+                    sx={{
+                      height: 40,
+                      width: 40,
+                      bgcolor: COLORS.default,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    {icon}
+                  </Box>
+
+                  <Typography
+                    sx={{
+                      fontFamily: FontFamily.default,
+                      fontSize: {
+                        lg: "1.5rem",
+                        sm: "2rem",
+                        xs: "1.5rem",
+                      },
+                      fontWeight: 600,
+                      letterSpacing: -0.3,
+                      lineHeight: 2,
+                    }}
+                  >
+                    {title}
+                  </Typography>
+
+                  <Typography>{subtitle}</Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      <FAQSection />
     </>
   );
 };

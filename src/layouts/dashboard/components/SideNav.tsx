@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 import NavigationMenu from "./NavigationMenu";
 import { sideNavPaperStyles } from "./data";
 
-function SideNav({ width }: { width: number }) {
+interface SideNavProps {
+  width: number;
+}
+
+function SideNav({ width }: SideNavProps) {
   return (
     <Drawer
       variant="permanent"
-      sx={[sideNavPaperStyles(width), { display: { xs: "none", sm: "block" } }]}
+      sx={[
+        // was sideNavPaperStyles(width) - see MobileSideNav for the same fix
+        sideNavPaperStyles({ width }),
+        { display: { xs: "none", sm: "block" } },
+      ]}
       open
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 5 }}>

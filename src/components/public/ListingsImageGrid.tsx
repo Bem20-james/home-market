@@ -2,16 +2,14 @@ import { Box, Container, Typography, IconButton, alpha } from "@mui/material";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import { Palette } from "../../config/colors";
+import { Palette, COLORS } from "../../config/colors";
 import { useState, useCallback } from "react";
 import { type GridItem, PAGES } from "./data";
+import { FontFamily } from "../../config/fonts";
 
 const C = {
-  bg: "#F7FAF7",
   brand: Palette.primary.main,
   brandDark: Palette.primary.dark ?? "#2D7A39",
-  ink: "#0D1A0F",
-  white: "#FFFFFF",
 };
 
 // ─── Single grid card ─────────────────────────────────────────────────────────
@@ -86,9 +84,9 @@ const GridCard = ({ item }: { item: GridItem }) => (
         position: "absolute",
         top: 14,
         left: 14,
-        bgcolor: alpha(C.white, 0.15),
+        bgcolor: alpha(COLORS.white, 0.15),
         backdropFilter: "blur(8px)",
-        border: `1px solid ${alpha(C.white, 0.25)}`,
+        border: `1px solid ${alpha(COLORS.white, 0.25)}`,
         borderRadius: "20px",
         px: "10px",
         py: "4px",
@@ -97,8 +95,8 @@ const GridCard = ({ item }: { item: GridItem }) => (
         gap: "4px",
       }}
     >
-      <LocationOnRoundedIcon sx={{ fontSize: 11, color: C.white }} />
-      <Typography sx={{ fontSize: 11, fontWeight: 600, color: C.white }}>
+      <LocationOnRoundedIcon sx={{ fontSize: 11, color: COLORS.white }} />
+      <Typography sx={{ fontSize: 11, fontWeight: 600, color: COLORS.white }}>
         {item.sublabel}
       </Typography>
     </Box>
@@ -117,7 +115,7 @@ const GridCard = ({ item }: { item: GridItem }) => (
         sx={{
           fontWeight: 700,
           fontSize: item.rowSpan === 2 ? "1.35rem" : "1.05rem",
-          color: C.white,
+          color: COLORS.white,
           lineHeight: 1.2,
           mb: 0.75,
           textShadow: "0 1px 6px rgba(0,0,0,0.35)",
@@ -139,10 +137,12 @@ const GridCard = ({ item }: { item: GridItem }) => (
           py: "5px",
         }}
       >
-        <Typography sx={{ fontSize: 11.5, fontWeight: 600, color: C.white }}>
+        <Typography
+          sx={{ fontSize: 11.5, fontWeight: 600, color: COLORS.white }}
+        >
           View Listings
         </Typography>
-        <ArrowForwardRoundedIcon sx={{ fontSize: 13, color: C.white }} />
+        <ArrowForwardRoundedIcon sx={{ fontSize: 13, color: COLORS.white }} />
       </Box>
     </Box>
   </Box>
@@ -198,9 +198,11 @@ const ListingsImageGrid = () => {
   const next = () => goTo((page + 1) % PAGES.length);
 
   return (
-    <Box component="section" sx={{ bgcolor: C.bg, py: { xs: 7, md: 10 } }}>
+    <Box
+      component="section"
+      sx={{ bgcolor: COLORS.pure, py: { xs: 7, md: 10 } }}
+    >
       <Container maxWidth="xl" sx={{ px: { xs: 2, md: 4 } }}>
-        {/* Header */}
         <Box
           sx={{
             display: "flex",
@@ -211,38 +213,52 @@ const ListingsImageGrid = () => {
             gap: 2,
           }}
         >
-          <Box sx={{ maxWidth: 620 }}>
+          <Box>
             <Typography
               component="h2"
               sx={{
                 fontWeight: 800,
-                fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
+                fontSize: { xs: "1.6rem", sm: "2rem", md: "3.5rem" },
+                fontFamily: FontFamily.mono,
                 letterSpacing: "-0.03em",
                 lineHeight: 1.18,
-                color: C.ink,
+                color: COLORS.ink,
+                pb: 2,
               }}
             >
-              Verified Property Listings
-              <br />
-              for Sale &amp; Rent in Nigeria
+              Verified Property Listings in Nigeria
+            </Typography>
+            <Typography
+              component="label"
+              sx={{
+                fontWeight: 500,
+                fontSize: { xs: "1.6rem", sm: "2rem", md: "1rem" },
+                fontFamily: FontFamily.mono,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.18,
+                color: COLORS.textMuted,
+                px: 2,
+              }}
+            >
+              Find verified homes, land, and commercial properties from trusted
+              sources across Nigeria.
             </Typography>
           </Box>
 
-          {/* Navigation arrows */}
           <Box sx={{ display: "flex", gap: 1.25, alignItems: "center" }}>
             <IconButton
               onClick={prev}
               sx={{
                 width: 44,
                 height: 44,
-                border: `1.5px solid ${alpha(C.ink, 0.14)}`,
-                color: C.ink,
-                bgcolor: C.white,
+                border: `1.5px solid ${alpha(COLORS.ink, 0.14)}`,
+                color: COLORS.ink,
+                bgcolor: COLORS.white,
                 transition: "all 0.22s",
                 "&:hover": {
                   bgcolor: C.brand,
                   borderColor: C.brand,
-                  color: C.white,
+                  color: COLORS.white,
                   transform: "translateX(-2px)",
                 },
               }}
@@ -254,14 +270,14 @@ const ListingsImageGrid = () => {
               sx={{
                 width: 44,
                 height: 44,
-                border: `1.5px solid ${alpha(C.ink, 0.14)}`,
-                color: C.ink,
-                bgcolor: C.white,
+                border: `1.5px solid ${alpha(COLORS.ink, 0.14)}`,
+                color: COLORS.ink,
+                bgcolor: COLORS.white,
                 transition: "all 0.22s",
                 "&:hover": {
                   bgcolor: C.brand,
                   borderColor: C.brand,
-                  color: C.white,
+                  color: COLORS.white,
                   transform: "translateX(2px)",
                 },
               }}
@@ -299,7 +315,7 @@ const ListingsImageGrid = () => {
                 width: i === page ? 28 : 8,
                 height: 8,
                 borderRadius: "8px",
-                bgcolor: i === page ? C.brand : alpha(C.ink, 0.16),
+                bgcolor: i === page ? C.brand : alpha(COLORS.ink, 0.16),
                 cursor: "pointer",
                 transition: "width 0.35s ease, background-color 0.35s ease",
               }}

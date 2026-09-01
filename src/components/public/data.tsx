@@ -223,7 +223,6 @@ export const TESTIMONIALS = [
   },
 ];
 
-// ─── Data — swap image paths for real assets ──────────────────────────────────
 export interface GridItem {
   id: number;
   label: string;
@@ -238,41 +237,41 @@ export const PAGES: GridItem[][] = [
   [
     {
       id: 1,
-      label: "100M & Below",
-      sublabel: "340 properties",
-      image: "/locations/budget-property.jpg",
+      label: "Makurdi",
+      sublabel: "40 listings",
+      image: "/home/slide1.jpg",
       rowSpan: 2,
     },
     {
       id: 2,
       label: "Lagos",
       sublabel: "1,240 listings",
-      image: "/locations/lagos.jpg",
+      image: "/home/slide2.jpg",
     },
     {
       id: 3,
       label: "Ibadan",
       sublabel: "418 listings",
-      image: "/locations/ibadan.jpg",
+      image: "/home/slide3.jpg",
       rowSpan: 2,
     },
     {
       id: 4,
       label: "Kano",
       sublabel: "209 listings",
-      image: "/locations/kano.jpg",
+      image: "/home/slide4.jpg",
     },
     {
       id: 5,
       label: "Abuja",
       sublabel: "872 listings",
-      image: "/locations/abuja.jpg",
+      image: "/home/slide5.jpg",
     },
     {
       id: 6,
       label: "Port Harcourt",
       sublabel: "314 listings",
-      image: "/locations/port-harcourt.jpg",
+      image: "/home/slide6.jpg",
     },
   ],
   // Page 2
@@ -281,39 +280,84 @@ export const PAGES: GridItem[][] = [
       id: 7,
       label: "Enugu",
       sublabel: "192 listings",
-      image: "/locations/enugu.jpg",
+      image: "/home/slide7.jpg",
       rowSpan: 2,
     },
     {
       id: 8,
       label: "Calabar",
       sublabel: "156 listings",
-      image: "/locations/calabar.jpg",
+      image: "/home/slide8.jpg",
     },
     {
       id: 9,
       label: "Warri",
       sublabel: "203 listings",
-      image: "/locations/warri.jpg",
+      image: "/home/slide9.jpg",
       rowSpan: 2,
     },
     {
       id: 10,
       label: "Owerri",
       sublabel: "141 listings",
-      image: "/locations/owerri.jpg",
+      image: "/home/slide10.jpg",
     },
     {
       id: 11,
       label: "Benin City",
       sublabel: "178 listings",
-      image: "/locations/benin.jpg",
+      image: "/home/slide11.jpg",
     },
     {
       id: 12,
       label: "Asaba",
       sublabel: "98 listings",
-      image: "/locations/asaba.jpg",
+      image: "/home/slide12.jpg",
     },
   ],
+];
+
+export const FAQS = [
+  {
+    id: 1,
+    category: "Fees",
+    question: "How do you ensure zero agent fees?",
+    answer:
+      "We connect tenants directly with verified landlords and property managers. Our platform sustains itself through optional premium features for landlords, ensuring seekers never pay a dime in agency fees. Every transaction is transparent and documented on our platform.",
+  },
+  {
+    id: 2,
+    category: "Verification",
+    question: 'What does "100% Verified" mean?',
+    answer:
+      "Every property on our platform undergoes a rigorous physical verification by our Trust Team. We check the property's condition, confirm the landlord's ownership documents, and ensure the photos accurately represent reality. Verified listings carry our green badge.",
+  },
+  {
+    id: 3,
+    category: "Landlords",
+    question: "How do I list my property?",
+    answer:
+      'Simply click "List Property" in the navigation bar, create a host profile, and upload your property details. Once submitted, our team will schedule a quick verification visit before your listing goes live. Most listings are approved within 48 hours.',
+  },
+  {
+    id: 4,
+    category: "Payments",
+    question: "Is it safe to pay rent through the platform?",
+    answer:
+      "Absolutely. We use bank-grade encryption and hold funds in escrow until you've successfully moved in and confirmed the property matches the verified listing. You're fully protected against fraud at every step.",
+  },
+  {
+    id: 5,
+    category: "Coverage",
+    question: "Which cities do you operate in?",
+    answer:
+      "We currently operate in 12 major cities across Africa, including Lagos, Nairobi, Accra, and Cape Town, with plans to expand to 20 more cities by end of year. New city launches are announced on our social channels.",
+  },
+  {
+    id: 6,
+    category: "Support",
+    question: "What happens if there's a dispute with my landlord?",
+    answer:
+      "Our dedicated Tenant Protection team mediates all disputes at no cost. We maintain full documentation of every listing and transaction, so resolutions are fast and evidence-based. Most cases are resolved within 72 hours.",
+  },
 ];

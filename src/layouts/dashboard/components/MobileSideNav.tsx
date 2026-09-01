@@ -3,7 +3,19 @@ import { Link } from "react-router-dom";
 import { sideNavPaperStyles } from "./data";
 import NavigationMenu from "./NavigationMenu";
 
-function MobileSideNav({ open, width, onClose, onTransitionEnd }) {
+interface MobileSideNavProps {
+  open: boolean;
+  width: number;
+  onClose: () => void;
+  onTransitionEnd: () => void;
+}
+
+function MobileSideNav({
+  open,
+  width,
+  onClose,
+  onTransitionEnd,
+}: MobileSideNavProps) {
   return (
     <Drawer
       variant="temporary"
@@ -14,12 +26,15 @@ function MobileSideNav({ open, width, onClose, onTransitionEnd }) {
         keepMounted: true,
       }}
       sx={[
-        sideNavPaperStyles(width),
+        // was sideNavPaperStyles(width) - the function expects
+        // { width: number }, not a bare number, so the styles were
+        // silently never applying
+        sideNavPaperStyles({ width }),
         {
           display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            width: width,
+            width,
           },
         },
       ]}

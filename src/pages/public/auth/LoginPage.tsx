@@ -16,11 +16,13 @@ import { CustomInput, CustomButton } from "../../../components";
 import { COLORS, Palette } from "../../../config/colors";
 import { useState } from "react";
 import LeftPanel from "./LeftPanel";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -58,6 +60,21 @@ const LoginPage = () => {
               justifyContent: "center",
             }}
           >
+            <Box
+              onClick={() => navigate("/")}
+              sx={{
+                cursor: "pointer",
+                transition: "transform 0.2s ease",
+                marginLeft: "-30px",
+                mb: "-20px",
+              }}
+            >
+              <Box
+                component="img"
+                src={"/logo.png"}
+                sx={{ width: { xs: 140, sm: 100, md: 200 }, height: "auto" }}
+              />
+            </Box>
             <Typography
               sx={{
                 color: "#0D0D0D",
@@ -135,12 +152,18 @@ const LoginPage = () => {
             </Stack>
 
             <CustomButton
-              type="submit"
+              to={"/auth/login"}
               shape="rounded"
               fullWidth
-              variant="primary"
+              variant={"success"}
+              size="md"
+              onClick={() => {}}
+              sx={{
+                width: { xs: "100%", sm: "auto" },
+                whiteSpace: "nowrap",
+              }}
             >
-              {"Log In"}
+              Login
             </CustomButton>
 
             <Divider
@@ -151,7 +174,7 @@ const LoginPage = () => {
                 fontSize: "13px",
               }}
             >
-              or continue with
+              or
             </Divider>
 
             <Button

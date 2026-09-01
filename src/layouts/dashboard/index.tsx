@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { Box } from "@mui/material";
 import { Palette } from "../../config/colors";
 import { useUserContext } from "../../contexts";
@@ -10,20 +9,21 @@ const SIDE_NAV_WIDTH = 210;
 const LAYOUT_PADDING = 20;
 const NAV_HEIGHT = 80;
 
-function DashboardLayout({ children }) {
+function DashboardLayout({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { user } = useUserContext();
-
-  const role = user?.role;
-
   const navigate = useNavigate();
 
   useEffect(() => {
+    // If you wrap your app in redux-persist's <PersistGate loading={...}>,
+    // this only runs after rehydration has actually finished, so a
+    // logged-in user on page refresh won't get bounced to /login for a
+    // false-negative "no user yet" tick.
     if (!user) {
-      navigate("/login");
+      navigate("/login", { replace: true });
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -39,6 +39,12 @@ function DashboardLayout({ children }) {
       setMobileOpen(!mobileOpen);
     }
   };
+
+  // Avoid flashing the protected layout for a frame before the redirect
+  // effect fires.
+  if (!user) {
+    return null;
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -63,13 +69,12 @@ function DashboardLayout({ children }) {
         <MobileSideNav
           open={mobileOpen}
           width={SIDE_NAV_WIDTH}
-          role={role}
           onClose={handleDrawerClose}
           onTransitionEnd={handleSideNavTransitionEnd}
         />
 
         {/* Desktop Drawer */}
-        <SideNav width={SIDE_NAV_WIDTH} role={role} />
+        <SideNav width={SIDE_NAV_WIDTH} />
       </Box>
 
       {/* Main Content Area */}

@@ -1,7 +1,11 @@
-import React from "react";
+import { Box, Typography } from "@mui/material";
 
 const LandlordOverview = () => {
-  return <div>LandlordOverview</div>;
+  return (
+    <Box>
+      <Typography>LandlordOverview</Typography>
+    </Box>
+  );
 };
 
 export default LandlordOverview;

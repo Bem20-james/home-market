@@ -22,6 +22,7 @@ interface InputProps {
   color?: string;
   disabled?: boolean;
   iconColor?: string;
+  onClear?: () => void;
 }
 
 const StyledTextField = styled(TextField)<{
@@ -31,7 +32,6 @@ const StyledTextField = styled(TextField)<{
     borderRadius: 8,
     borderWidth: 2,
     backgroundColor: "transparent",
-
     "&.Mui-focused fieldset": {
       borderColor: customcolor || theme.palette.primary.main,
     },
@@ -81,6 +81,7 @@ const CustomInput = ({
   fullWidth = true,
   color,
   disabled = false,
+  onClear,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -100,47 +101,50 @@ const CustomInput = ({
       helperText={maxLength ? `${value.length}/${maxLength}` : helperText}
       multiline={multiline}
       rows={multiline ? rows : undefined}
-      inputProps={{ maxLength }}
+      slotProps={{
+        htmlInput: {
+          maxLength,
+        },
+
+        input: {
+          startAdornment:
+            startIcon || currency ? (
+              <InputAdornment position="start">
+                {currency ? currency : startIcon}
+              </InputAdornment>
+            ) : undefined,
+
+          endAdornment: (
+            <>
+              {isSearch && value && (
+                <InputAdornment position="end">
+                  <IconButton onClick={onClear}>
+                    <Close sx={{ color: Palette.primary.main }} />
+                  </IconButton>
+                </InputAdornment>
+              )}
+
+              {isPassword && (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? (
+                      <VisibilityOff sx={{ color: Palette.primary.main }} />
+                    ) : (
+                      <Visibility sx={{ color: Palette.primary.main }} />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              )}
+
+              {endIcon && (
+                <InputAdornment position="end">{endIcon}</InputAdornment>
+              )}
+            </>
+          ),
+        },
+      }}
       customcolor={color}
       disabled={disabled}
-      InputProps={{
-        startAdornment:
-          startIcon || currency ? (
-            <InputAdornment position="start">
-              {currency ? currency : startIcon}
-            </InputAdornment>
-          ) : undefined,
-
-        endAdornment: (
-          <>
-            {isSearch && value && (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => onChange({ target: { value: "" } } as any)}
-                >
-                  <Close sx={{ color: Palette.primary.main }} />
-                </IconButton>
-              </InputAdornment>
-            )}
-
-            {isPassword && (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? (
-                    <VisibilityOff sx={{ color: Palette.primary.main }} />
-                  ) : (
-                    <Visibility sx={{ color: Palette.primary.main }} />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            )}
-
-            {endIcon && (
-              <InputAdornment position="end">{endIcon}</InputAdornment>
-            )}
-          </>
-        ),
-      }}
     />
   );
 };

@@ -82,7 +82,7 @@ const Footer = () => {
               <Stack spacing={1.25}>
                 {col.links.map((link) => (
                   <LinkItem
-                    key={link.href}
+                    key={`${col.title}-${link.label}`}
                     label={link.label}
                     link={link.href}
                   />
@@ -182,7 +182,7 @@ const Footer = () => {
           }}
         >
           <Typography sx={{ color: "#9ca3af", fontSize: "12px" }}>
-            © 2026 Prop Listings. All rights reserved.
+            &copy; 2026 Prop Listings. All rights reserved.
           </Typography>
 
           <Stack direction="row" spacing={2.5}>
