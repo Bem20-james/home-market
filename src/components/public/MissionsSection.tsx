@@ -124,7 +124,7 @@ const MissionSection = () => (
         <CustomButton
           to={"/auth/onboarding"}
           shape="rounded"
-          variant="success"
+          variant="accent"
           sx={{
             width: { xs: "100%", sm: "auto" },
             px: 3,
