@@ -7,7 +7,7 @@ import {
   SolutionsSection,
   StatsBar,
   TestimonialsSection,
-} from "../../../components";
+} from "../../../components/public";
 
 const HomePage = () => {
   return (

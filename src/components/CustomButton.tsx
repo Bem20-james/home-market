@@ -12,6 +12,7 @@ import {
 import { type SystemStyleObject } from "@mui/system";
 import { Link, type LinkProps } from "react-router-dom";
 import { FontFamily } from "../config/fonts";
+import { Palette } from "../config/colors";
 
 type ButtonVariant =
   | "primary"
@@ -56,56 +57,86 @@ export interface ButtonProps extends Omit<
 // ─────────────────────────────────────────────────────────────────────────────
 
 const VARIANT_STYLES: Record<ButtonVariant, SystemStyleObject<Theme>> = {
-  info: {
-    background: "linear-gradient(135deg, #F5C518 0%, #E0A800 100%)",
-    color: "#1A1A0E",
-    fontWeight: 700,
-    boxShadow: "0 4px 16px rgba(245,197,24,0.28)",
-    "&:hover": {
-      background: "linear-gradient(135deg, #FFD740 0%, #F5C518 100%)",
-      boxShadow: "0 6px 22px rgba(245,197,24,0.40)",
-      transform: "translateY(-1px)",
-    },
-    "&:active": {
-      transform: "translateY(0px)",
-      boxShadow: "0 2px 8px rgba(245,197,24,0.2)",
-    },
-  },
-  light: {
-    background: "#FFFFFF",
-    color: "#1A1A0E",
-    fontWeight: 700,
-    boxShadow: "0 4px 16px rgba(200, 220, 223, 0.86)",
-    "&:hover": {
-      background: "#FFFFFF",
-      boxShadow: "0 6px 22px rgba(45, 47, 83, 0.4)",
-      transform: "translateY(-1px)",
-    },
-    "&:active": {
-      transform: "translateY(0px)",
-      boxShadow: "0 2px 8px rgba(45, 47, 83, 0.2)",
-    },
-  },
-  secondary: {
-    background: "#263238",
+  // Main brand action: navy
+  primary: {
+    background: `linear-gradient(135deg, ${Palette.primary.main} 0%, ${Palette.primary.dark} 100%)`,
     color: "#FFFFFF",
-    border: "none",
-    backdropFilter: "blur(8px)",
+    boxShadow: "0 4px 16px rgba(27,54,93,0.35)",
     "&:hover": {
-      background: "#2d3235",
-      border: "1px solid #2f3437",
+      background: `linear-gradient(135deg, ${Palette.primary.default} 0%, ${Palette.primary.main} 100%)`,
+      boxShadow: "0 6px 22px rgba(51,78,104,0.45)",
       transform: "translateY(-1px)",
     },
     "&:active": { transform: "translateY(0px)" },
   },
-  accent: {
-    background: "transparent",
-    color: "rgba(255,255,255,0.7)",
+  // Quiet action: solid slate-navy
+  secondary: {
+    background: Palette.primary.default,
+    color: "#FFFFFF",
+    border: "none",
     "&:hover": {
-      background: "#263238",
-      color: "#FFFFFF",
+      background: Palette.primary.light,
+      transform: "translateY(-1px)",
+    },
+    "&:active": { transform: "translateY(0px)" },
+  },
+  // Highlight action: gold
+  accent: {
+    background: `linear-gradient(135deg, ${Palette.accent.main} 0%, ${Palette.accent.dark} 100%)`,
+    color: Palette.primary.dark,
+    fontWeight: 700,
+    boxShadow: "0 4px 16px rgba(234,179,8,0.28)",
+    "&:hover": {
+      background: `linear-gradient(135deg, ${Palette.accent.light} 0%, ${Palette.accent.main} 100%)`,
+      boxShadow: "0 6px 22px rgba(234,179,8,0.40)",
+      transform: "translateY(-1px)",
+    },
+    "&:active": {
+      transform: "translateY(0px)",
+      boxShadow: "0 2px 8px rgba(234,179,8,0.2)",
     },
   },
+  // Neutral informational action: lighter navy
+  info: {
+    background: `linear-gradient(135deg, ${Palette.primary.light} 0%, ${Palette.primary.default} 100%)`,
+    color: "#FFFFFF",
+    boxShadow: "0 4px 16px rgba(91,116,150,0.28)",
+    "&:hover": {
+      background: `linear-gradient(135deg, ${Palette.primary.light} 0%, ${Palette.primary.main} 100%)`,
+      boxShadow: "0 6px 22px rgba(91,116,150,0.40)",
+      transform: "translateY(-1px)",
+    },
+    "&:active": { transform: "translateY(0px)" },
+  },
+  // Light surface button, for dark backgrounds
+  light: {
+    background: Palette.primary.neutral,
+    color: Palette.primary.main,
+    fontWeight: 700,
+    boxShadow: "0 4px 16px rgba(244,247,250,0.18)",
+    "&:hover": {
+      background: "#FFFFFF",
+      boxShadow: "0 6px 22px rgba(244,247,250,0.30)",
+      transform: "translateY(-1px)",
+    },
+    "&:active": {
+      transform: "translateY(0px)",
+      boxShadow: "0 2px 8px rgba(244,247,250,0.15)",
+    },
+  },
+  outline: {
+    background: "transparent",
+    color: Palette.primary.neutral,
+    border: `1.5px solid ${Palette.primary.light}`,
+    "&:hover": {
+      background: "rgba(234,179,8,0.08)",
+      border: `1.5px solid ${Palette.accent.main}`,
+      color: Palette.accent.light,
+      transform: "translateY(-1px)",
+    },
+    "&:active": { transform: "translateY(0px)" },
+  },
+  // Unchanged
   danger: {
     background: "linear-gradient(135deg, #E53935 0%, #B71C1C 100%)",
     color: "#FFFFFF",
@@ -124,28 +155,6 @@ const VARIANT_STYLES: Record<ButtonVariant, SystemStyleObject<Theme>> = {
     "&:hover": {
       background: "linear-gradient(135deg, #388E3C 0%, #6DBF2E 100%)",
       boxShadow: "0 6px 22px rgba(46,125,50,0.38)",
-      transform: "translateY(-1px)",
-    },
-    "&:active": { transform: "translateY(0px)" },
-  },
-  outline: {
-    background: "transparent",
-    color: "#FFFFFF",
-    border: "1.5px solid #FFFFFF",
-    "&:hover": {
-      background: "rgba(245,197,24,0.08)",
-      border: "1.5px solid #FFFFFF",
-      transform: "translateY(-1px)",
-    },
-    "&:active": { transform: "translateY(0px)" },
-  },
-  primary: {
-    background: "linear-gradient(135deg, #2196F3 0%, #1565C0 100%)",
-    color: "#FFFFFF",
-    boxShadow: "0 4px 16px rgba(33,150,243,0.25)",
-    "&:hover": {
-      background: "linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%)",
-      boxShadow: "0 6px 22px rgba(33,150,243,0.38)",
       transform: "translateY(-1px)",
     },
     "&:active": { transform: "translateY(0px)" },

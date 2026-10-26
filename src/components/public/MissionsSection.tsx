@@ -11,7 +11,7 @@ const MissionSection = () => (
     component="section"
     sx={{
       position: "relative",
-      bgcolor: COLORS.light,
+      bgcolor: COLORS.neutral,
       height: "100vh",
       width: "100vw",
       overflow: "hidden",
@@ -52,9 +52,9 @@ const MissionSection = () => (
         data-aos-duration="1000"
         component="h2"
         sx={{
-          fontWeight: 800,
+          fontWeight: 300,
           fontSize: { xs: "2rem", sm: "3rem", md: "5rem" },
-          fontFamily: FontFamily.default,
+          fontFamily: FontFamily.primary,
           letterSpacing: "-0.03em",
           lineHeight: 1.18,
           color: COLORS.ink,
@@ -74,7 +74,7 @@ const MissionSection = () => (
             fontWeight: 700,
             fontStyle: "normal",
             letterSpacing: "-0.03em",
-            color: COLORS.default,
+            color: COLORS.primary,
             mb: 2,
             "&::after": {
               content: '""',

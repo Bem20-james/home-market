@@ -11,13 +11,14 @@ import {
   Button,
   Menu,
 } from "@mui/material";
-import { mockNotifications, type Notification } from "./data";
+import { mockNotifications } from "./data";
+import { type AppNotification } from "../../../types/dashboard";
 
 interface NotificationsMenuProps {
   anchorEl: HTMLElement | null;
   open: boolean;
   onClose: () => void;
-  activities?: Notification[];
+  activities?: AppNotification[];
 }
 
 function NotificationsMenu({
@@ -73,7 +74,7 @@ function NotificationsMenu({
                   <Avatar
                     sx={{ backgroundColor: "#1976d2", width: 40, height: 40 }}
                   >
-                    {notification.userIcon || "N"}
+                    {notification.avatarInitials || "N"}
                   </Avatar>
                 </ListItemAvatar>
 
@@ -91,17 +92,17 @@ function NotificationsMenu({
                         color="text.secondary"
                         sx={{ display: "block", mt: 0.5 }}
                       >
-                        {notification.message}
+                        {notification.body}
                       </Typography>
 
-                      {notification.time && (
+                      {notification.timestamp && (
                         <Typography
                           component="span"
                           variant="caption"
                           color="text.secondary"
                           sx={{ display: "block", mt: 0.5 }}
                         >
-                          {notification.time}
+                          {notification.timestamp}
                         </Typography>
                       )}
                     </>

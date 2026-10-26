@@ -18,7 +18,7 @@ const FeaturedListings = () => {
   return (
     <Box
       component="section"
-      sx={{ bgcolor: "#fff", py: { xs: 6, md: 8 }, overflow: "hidden" }}
+      sx={{ bgcolor: COLORS.white, py: { xs: 6, md: 8 }, overflow: "hidden" }}
     >
       <Container maxWidth="lg">
         <Box
@@ -37,7 +37,7 @@ const FeaturedListings = () => {
                 letterSpacing: "-0.02em",
                 color: COLORS.ink,
                 fontSize: { xs: "2rem", md: "3rem" },
-                fontFamily: FontFamily.default,
+                fontFamily: FontFamily.secondary,
                 mb: "2px",
               }}
             >
@@ -45,7 +45,7 @@ const FeaturedListings = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: ".9rem",
+                fontSize: "1rem",
                 color: Palette.primary.main,
                 fontWeight: 500,
               }}

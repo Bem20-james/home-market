@@ -1,72 +1,107 @@
-import { useState } from "react";
-import { Box } from "@mui/material";
-import { Palette } from "../../../config/colors";
-import { ActiveLink, InActiveLink } from "./CustomLink";
-import { useUserContext } from "../../../contexts";
 import { useLocation } from "react-router-dom";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Palette } from "../../../config/colors";
 import { getNav } from "../../../utils/getNav";
+import { useSelector } from "react-redux";
+import { type RootState } from "../../../store";
 
-function NavigationMenu() {
-  // useLocation() re-renders on route change; window.location.pathname does
-  // not, so active-link highlighting could go stale.
-  const { pathname: currentPath } = useLocation();
-  const [openItemIndex, setOpenItemIndex] = useState<number | null>(null);
-  const { user } = useUserContext();
-
-  // Auth redirection is DashboardLayout's job (the parent already guards
-  // this route) - a second copy of that logic here was redundant and had
-  // its own missing-dependency bug. This component only renders once
-  // DashboardLayout has confirmed there's a user.
-
-  // user is already the User object from context - no nested `.user`.
+const NavigationMenu = ({ open }: { open: boolean }) => {
+  const location = useLocation();
+  const user = useSelector((state: RootState) => state.auth.user);
   const navItems = getNav(user);
-
-  const toggleItem = (index: number) => {
-    setOpenItemIndex(index === openItemIndex ? null : index);
-  };
 
   return (
     <Box>
-      {navItems.map((item, i) => {
-        const Icon = item.icon;
-        const isOpen = openItemIndex === i;
+      <List>
+        {navItems.map((item, index) => {
+          const isActive = location.pathname === item.path;
+          const Icon = item.icon;
 
-        return (
-          <Box key={item.path + i}>
-            <ActiveLink
-              onClick={() => toggleItem(i)}
-              to={item.path}
-              isactive={item.path === currentPath}
-            >
-              <Icon
-                size={18}
-                color={isOpen ? Palette.primary.main : Palette.primary.default}
-              />
-              {item.label}
-            </ActiveLink>
-
-            {isOpen && item.children.length > 0 && (
-              <Box sx={{ pl: 2, mt: 1 }}>
-                {item.children.map((child, j) => {
-                  const ChildIcon = child.icon;
-                  return (
-                    <InActiveLink
-                      key={child.path + j}
-                      to={child.path}
-                      isactive={child.path === currentPath}
+          return (
+            <ListItem key={index} disablePadding sx={{ display: "block" }}>
+              <Link
+                to={item.path}
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    my: 0.5,
+                    mx: 1,
+                    borderRadius: 2,
+                    backgroundColor: isActive
+                      ? Palette.primary.main
+                      : "#ffffff",
+                    transform: isActive ? "scale(1.02)" : "none",
+                    "&:hover": {
+                      backgroundColor: Palette.primary.default,
+                      my: 1,
+                      mx: 1,
+                      transform: "scale(1.05)",
+                    },
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 2 : "auto",
+                      justifyContent: "center",
+                      color: isActive
+                        ? Palette.primary.light
+                        : Palette.primary.light,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        backgroundColor: isActive
+                          ? Palette.primary.default
+                          : Palette.primary.default,
+                        p: 1,
+                        borderRadius: 20,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        transition: "all 0.3s ease-in-out",
+                      }}
                     >
-                      <ChildIcon size={16} />
-                      {child.label}
-                    </InActiveLink>
-                  );
-                })}
-              </Box>
-            )}
-          </Box>
-        );
-      })}
+                      {Icon && <Icon fontSize="small" />}
+                    </Box>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.label}
+                    sx={{
+                      opacity: open ? 1 : 0,
+                      "& .MuiListItemText-primary": {
+                        fontSize: ".8rem",
+                        fontWeight: isActive ? "bold" : "normal",
+                        color: isActive
+                          ? Palette.primary.light
+                          : Palette.primary.dark,
+                        "&:hover": {
+                          color: Palette.primary.dark,
+                        },
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          );
+        })}
+      </List>
     </Box>
   );
-}
+};
 
 export default NavigationMenu;

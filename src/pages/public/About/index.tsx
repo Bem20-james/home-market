@@ -1,8 +1,12 @@
 import { Box, Container, Typography, Grid, alpha } from "@mui/material";
 import { FontFamily } from "../../../config/fonts";
 import { COLORS } from "../../../config/colors";
-import { CustomChip, HeroCard } from "../../../components";
-import { MissionsSection, AboutSection, FAQSection } from "../../../components";
+import { CustomChip, HeroCard } from "../../../components/public";
+import {
+  MissionsSection,
+  AboutSection,
+  FAQSection,
+} from "../../../components/public";
 import {
   PeopleRounded,
   SecurityRounded,
@@ -60,7 +64,7 @@ const AboutPage = () => {
 
       <Box
         sx={{
-          bgcolor: COLORS.light,
+          bgcolor: COLORS.neutral,
           pt: { xs: "100px", md: "132px" },
           pb: { xs: 10, md: 14 },
           position: "relative",
@@ -87,13 +91,13 @@ const AboutPage = () => {
               <Typography
                 variant="h1"
                 sx={{
-                  fontSize: { xs: "4rem", sm: "4rem", md: "4rem" },
-                  fontWeight: 600,
-                  color: COLORS.black,
+                  fontSize: { xs: "4rem", sm: "4rem", md: "3rem" },
+                  fontWeight: 300,
+                  color: COLORS.dark,
                   lineHeight: 1.1,
                   letterSpacing: "-0.03em",
                   maxWidth: "1100px",
-                  fontFamily: FontFamily.secondary,
+                  fontFamily: FontFamily.primary,
                 }}
               >
                 We are rebuilding
@@ -115,7 +119,7 @@ const AboutPage = () => {
               <Typography
                 component="p"
                 sx={{
-                  fontFamily: FontFamily.default,
+                  fontFamily: FontFamily.secondary,
                   fontSize: { xs: "1.5rem", md: "2rem" },
                   fontWeight: 800,
                   fontStyle: "normal",
@@ -132,7 +136,7 @@ const AboutPage = () => {
                   fontSize: "1.05rem",
                   fontFamily: FontFamily.accent,
                   lineHeight: 1.7,
-                  color: COLORS.dark,
+                  color: COLORS.tertiary,
                   opacity: 0.75,
                   maxWidth: "480px",
                   mb: 5,
@@ -159,7 +163,7 @@ const AboutPage = () => {
                       pl: i === 0 ? 0 : { xs: 0, sm: 4 },
                       borderLeft: {
                         xs: "none",
-                        sm: i === 0 ? "none" : `1px solid ${COLORS.dark}22`,
+                        sm: i === 0 ? "none" : `1px solid ${COLORS.tertiary}22`,
                       },
                     }}
                   >
@@ -168,7 +172,7 @@ const AboutPage = () => {
                         fontFamily: FontFamily.primary,
                         fontSize: { xs: "1.5rem", md: "1.7rem" },
                         fontWeight: 700,
-                        color: COLORS.dark,
+                        color: COLORS.tertiary,
                         lineHeight: 1.1,
                       }}
                     >
@@ -178,7 +182,7 @@ const AboutPage = () => {
                       sx={{
                         fontFamily: FontFamily.accent,
                         fontSize: "0.85rem",
-                        color: COLORS.dark,
+                        color: COLORS.tertiary,
                         opacity: 0.6,
                       }}
                     >
@@ -251,7 +255,7 @@ const AboutPage = () => {
                     top: "6%",
                     right: { xs: "4%", md: "-8%" },
                     zIndex: 3,
-                    bgcolor: COLORS.dark,
+                    bgcolor: COLORS.tertiary,
                     borderRadius: "16px",
                     px: 2.5,
                     py: 1.5,
@@ -296,7 +300,7 @@ const AboutPage = () => {
       <AboutSection />
       <Box
         sx={{
-          bgcolor: COLORS.light,
+          bgcolor: COLORS.neutral,
           pt: { xs: "100px", md: "132px" },
           pb: { xs: 10, md: 14 },
           position: "relative",
@@ -310,7 +314,7 @@ const AboutPage = () => {
               sx={{
                 fontWeight: 800,
                 fontSize: { xs: "1.85rem", md: "3.5rem" },
-                fontFamily: FontFamily.default,
+                fontFamily: FontFamily.primary,
                 letterSpacing: "-0.03em",
                 color: COLORS.ink,
                 mb: 1.25,
@@ -336,7 +340,7 @@ const AboutPage = () => {
                 key={id}
                 size={{ xs: 12, sm: 4, md: 4 }}
                 sx={{
-                  bgcolor: alpha(COLORS.light, 0.7),
+                  bgcolor: alpha(COLORS.neutral, 0.7),
                   p: 4,
                   borderRadius: 6,
                 }}
@@ -346,7 +350,7 @@ const AboutPage = () => {
                     sx={{
                       height: 40,
                       width: 40,
-                      bgcolor: COLORS.default,
+                      bgcolor: COLORS.accentL,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -358,7 +362,7 @@ const AboutPage = () => {
 
                   <Typography
                     sx={{
-                      fontFamily: FontFamily.default,
+                      fontFamily: FontFamily.primary,
                       fontSize: {
                         lg: "1.5rem",
                         sm: "2rem",

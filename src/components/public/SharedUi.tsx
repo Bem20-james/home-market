@@ -142,11 +142,11 @@ export const IconAvatar = ({
       alignItems: "center",
       justifyContent: "center",
       bgcolor: dark
-        ? alpha("#FFFFFF", 0.1)
+        ? alpha(COLORS.white, 0.1)
         : green
-          ? alpha(COLORS.dark, 0.12)
+          ? alpha(COLORS.tertiary, 0.12)
           : alpha(COLORS.brand, 0.1),
-      color: dark ? COLORS.brand : green ? COLORS.dark : COLORS.brandDark,
+      color: dark ? COLORS.accent : green ? COLORS.accent : COLORS.dark,
       flexShrink: 0,
       "& svg": { fontSize: 22 },
     }}

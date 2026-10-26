@@ -219,7 +219,7 @@ const ListingsImageGrid = () => {
               sx={{
                 fontWeight: 800,
                 fontSize: { xs: "1.6rem", sm: "2rem", md: "3.5rem" },
-                fontFamily: FontFamily.default,
+                fontFamily: FontFamily.secondary,
                 letterSpacing: "-0.03em",
                 lineHeight: 1.18,
                 color: COLORS.ink,
@@ -233,7 +233,7 @@ const ListingsImageGrid = () => {
               sx={{
                 fontWeight: 500,
                 fontSize: { xs: "1.6rem", sm: "2rem", md: "1rem" },
-                fontFamily: FontFamily.default,
+                fontFamily: FontFamily.accent,
                 letterSpacing: "-0.03em",
                 lineHeight: 1.18,
                 color: COLORS.textMuted,

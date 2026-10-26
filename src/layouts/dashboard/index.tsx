@@ -1,98 +1,78 @@
-import { useState, useEffect, type ReactNode } from "react";
-import { Box } from "@mui/material";
-import { Palette } from "../../config/colors";
-import { useUserContext } from "../../contexts";
-import { useNavigate } from "react-router-dom";
-import { NavBar, MobileSideNav, SideNav } from "./components";
+import { useState } from "react";
+import type { ReactNode } from "react";
+import { Box, CssBaseline } from "@mui/material";
 
-const SIDE_NAV_WIDTH = 210;
-const LAYOUT_PADDING = 20;
-const NAV_HEIGHT = 80;
+import NavBar from "./components/NavBar";
+import SideNav, {
+  DRAWER_WIDTH_OPEN,
+  DRAWER_WIDTH_CLOSED,
+} from "./components/SideNav";
+import MobileSideNav from "./components/MobileSideNav";
+import Footer from "./components/Footer";
 
-function DashboardLayout({ children }: { children: ReactNode }) {
+const NAV_HEIGHT = 70;
+
+interface LayoutProps {
+  children: ReactNode;
+}
+
+function DashboardLayout({ children }: LayoutProps) {
+  const [open, setOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const { user } = useUserContext();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    // If you wrap your app in redux-persist's <PersistGate loading={...}>,
-    // this only runs after rehydration has actually finished, so a
-    // logged-in user on page refresh won't get bounced to /login for a
-    // false-negative "no user yet" tick.
-    if (!user) {
-      navigate("/login", { replace: true });
-    }
-  }, [user, navigate]);
+  const toggleDrawer = () => setOpen((prev) => !prev);
+  const toggleMobileDrawer = () => setMobileOpen((prev) => !prev);
+  const closeMobileDrawer = () => setMobileOpen(false);
 
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleSideNavTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleSideNavToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
-
-  // Avoid flashing the protected layout for a frame before the redirect
-  // effect fires.
-  if (!user) {
-    return null;
-  }
+  const drawerWidth = open ? DRAWER_WIDTH_OPEN : DRAWER_WIDTH_CLOSED;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      {/* Top Navigation Bar */}
-      <NavBar
-        sideNavWidth={SIDE_NAV_WIDTH}
-        layoutPadding={LAYOUT_PADDING}
-        navHeight={NAV_HEIGHT}
-        onMenuClick={handleSideNavToggle}
-      />
+    <Box sx={{ display: "flex", minHeight: "100vh", background: "#f7f7fc" }}>
+      <CssBaseline />
 
-      {/* Side Navigation */}
       <Box
         component="nav"
         sx={{
-          width: { sm: SIDE_NAV_WIDTH },
-          flexShrink: { sm: 0 },
+          display: { xs: "none", sm: "block" },
+          flexShrink: 0,
+          width: drawerWidth,
+          transition: "width 0.3s ease",
         }}
-        aria-label="side-navigation"
       >
-        {/* Mobile Drawer */}
-        <MobileSideNav
-          open={mobileOpen}
-          width={SIDE_NAV_WIDTH}
-          onClose={handleDrawerClose}
-          onTransitionEnd={handleSideNavTransitionEnd}
-        />
-
-        {/* Desktop Drawer */}
-        <SideNav width={SIDE_NAV_WIDTH} />
+        <SideNav open={open} />
       </Box>
 
-      {/* Main Content Area */}
+      <MobileSideNav open={mobileOpen} onClose={closeMobileDrawer} />
+
       <Box
-        component="main"
         sx={{
           flex: 1,
-          boxSizing: "border-box",
-          pl: `${LAYOUT_PADDING + 0}px`,
-          pr: `${LAYOUT_PADDING}px`,
-          pt: `${NAV_HEIGHT + LAYOUT_PADDING}px`,
-          pb: `${LAYOUT_PADDING}px`,
-          backgroundColor: Palette.primary.default,
-          maxWidth: "100%",
-          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+          transition: "margin 0.3s ease",
         }}
       >
-        {children}
+        <NavBar
+          open={open}
+          toggleDrawer={toggleDrawer}
+          mobileToggle={toggleMobileDrawer}
+        />
+
+        <Box
+          component="main"
+          sx={{
+            flex: 1,
+            mt: `${NAV_HEIGHT}px`,
+            px: { xs: 2, sm: 3 },
+            py: { xs: 2, sm: 3 },
+            boxSizing: "border-box",
+          }}
+        >
+          {children}
+        </Box>
+
+        <Footer />
       </Box>
     </Box>
   );

@@ -12,7 +12,7 @@ import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
-import { CustomInput, CustomButton } from "../../../components";
+import { CustomInput, CustomButton } from "../../../components/public";
 import { COLORS, Palette } from "../../../config/colors";
 import { useState } from "react";
 import LeftPanel from "./LeftPanel";
@@ -31,7 +31,7 @@ const LoginPage = () => {
         height: "100vh",
         display: "flex",
         overflow: "hidden",
-        bgcolor: COLORS.light,
+        bgcolor: COLORS.neutral,
         boxShadow: "0 4px 40px rgba(0,0,0,0.07)",
       }}
     >
@@ -155,7 +155,7 @@ const LoginPage = () => {
               to={"/auth/login"}
               shape="rounded"
               fullWidth
-              variant={"success"}
+              variant={"primary"}
               size="md"
               onClick={() => {}}
               sx={{

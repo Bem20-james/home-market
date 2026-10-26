@@ -13,7 +13,7 @@ import type { NavItem } from "./types";
 export const LANDLORD_NAV: NavItem[] = [
   {
     label: "Dashboard",
-    path: "/dashboard",
+    path: "/dashboard/landlord",
     icon: MdDashboard,
     children: [],
   },

@@ -3,23 +3,17 @@ import { steps, type StepsType } from "./data";
 import { COLORS } from "../../config/colors";
 import { FontFamily } from "../../config/fonts";
 
-const tokens = {
-  surface: "#F4FAEE",
-  surfaceHi: "#7BCB4E",
-  sub: "#5B7560",
-};
-
 const ProcessSteps = () => {
   return (
     <Box
       component="section"
       sx={{
-        bgcolor: COLORS.light,
+        bgcolor: COLORS.neutral,
         py: { xs: 8, md: 11 },
       }}
     >
       <Container maxWidth="lg">
-        <Stack spacing={1.5} sx={{ textAlign: "center", mb: { xs: 6, md: 7 } }}>
+        <Stack spacing={1} sx={{ textAlign: "center", mb: { xs: 6, md: 7 } }}>
           <Typography
             component="h2"
             sx={{
@@ -27,15 +21,15 @@ const ProcessSteps = () => {
               letterSpacing: "-0.02em",
               color: COLORS.ink,
               fontSize: { xs: "2rem", md: "4rem" },
-              fontFamily: FontFamily.default,
+              fontFamily: FontFamily.secondary,
             }}
           >
             Your Journey to a New Home
           </Typography>
           <Typography
             sx={{
-              color: tokens.sub,
-              fontSize: { xs: "0.95rem", md: "1rem" },
+              color: COLORS.dark,
+              fontSize: { xs: "0.85rem", md: "1rem" },
               mx: "auto",
             }}
           >
@@ -43,8 +37,6 @@ const ProcessSteps = () => {
             traditional real estate agents.
           </Typography>
         </Stack>
-
-        {/* Step rail: cards + connecting path that encodes the real sequence */}
         <Box sx={{ position: "relative" }}>
           {/* dotted connector — desktop only, sits behind the cards at icon height */}
           <Box
@@ -91,16 +83,16 @@ function StepCard({ step }: { step: StepsType }) {
         height: "100%",
         borderRadius: 4,
         p: { xs: 3, md: 3.25 },
-        bgcolor: active ? tokens.surfaceHi : tokens.surface,
+        bgcolor: active ? COLORS.tertiary : COLORS.neutral,
         border: active ? "none" : `1px solid ${alpha(COLORS.brand, 0.12)}`,
         boxShadow: active
-          ? `0 18px 32px -12px ${alpha(tokens.surfaceHi, 0.55)}`
+          ? `0 18px 32px -12px ${alpha(COLORS.tertiary, 0.55)}`
           : `0 1px 2px ${alpha(COLORS.ink, 0.04)}`,
         transition: "transform 220ms ease, box-shadow 220ms ease",
         "&:hover": {
           transform: "translateY(-4px)",
           boxShadow: active
-            ? `0 22px 38px -10px ${alpha(tokens.surfaceHi, 0.6)}`
+            ? `0 22px 38px -10px ${alpha(COLORS.tertiary, 0.6)}`
             : `0 12px 24px -10px ${alpha(COLORS.brandDark, 0.18)}`,
         },
       }}
@@ -114,8 +106,10 @@ function StepCard({ step }: { step: StepsType }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            bgcolor: active ? alpha("#ffffff", 0.22) : alpha(COLORS.brand, 0.1),
-            color: active ? "#ffffff" : COLORS.primary,
+            bgcolor: active
+              ? alpha(COLORS.accent, 0.22)
+              : alpha(COLORS.brand, 0.1),
+            color: active ? COLORS.accent : COLORS.primary,
           }}
         >
           {icon}
@@ -127,9 +121,7 @@ function StepCard({ step }: { step: StepsType }) {
             fontWeight: 700,
             letterSpacing: "0.08em",
             textTransform: "uppercase",
-            color: active
-              ? alpha("#ffffff", 0.75)
-              : alpha(COLORS.brandDark, 0.65),
+            color: active ? alpha("#ffffff", 0.75) : alpha(COLORS.dark, 0.65),
           }}
         >
           {eyebrow}
@@ -141,6 +133,7 @@ function StepCard({ step }: { step: StepsType }) {
             fontWeight: 700,
             fontSize: "1.15rem",
             color: active ? "#ffffff" : COLORS.ink,
+            fontFamily: FontFamily.primary,
           }}
         >
           {title}
@@ -150,7 +143,7 @@ function StepCard({ step }: { step: StepsType }) {
           sx={{
             fontSize: "0.92rem",
             lineHeight: 1.6,
-            color: active ? alpha("#ffffff", 0.92) : tokens.sub,
+            color: active ? alpha("#ffffff", 0.92) : COLORS.dark,
           }}
         >
           {description}

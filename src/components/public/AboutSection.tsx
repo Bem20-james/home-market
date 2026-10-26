@@ -1,13 +1,13 @@
 import { Box, Container, Typography, Grid } from "@mui/material";
 import { FontFamily } from "../../config/fonts";
 import { COLORS } from "../../config/colors";
-import { CustomChip } from "../../components";
+import { CustomChip } from ".";
 
 const AboutSection = () => {
   return (
     <Box
       sx={{
-        bgcolor: COLORS.light,
+        bgcolor: COLORS.neutral,
         pt: { xs: "100px", md: "132px" },
         pb: { xs: 10, md: 14 },
         position: "relative",
@@ -106,12 +106,12 @@ const AboutSection = () => {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "4rem", sm: "4rem", md: "4rem" },
-                fontWeight: 600,
-                color: COLORS.black,
+                fontSize: { xs: "4rem", sm: "4rem", md: "3rem" },
+                fontWeight: 300,
+                color: COLORS.dark,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
-                fontFamily: FontFamily.secondary,
+                fontFamily: FontFamily.primary,
               }}
             >
               Driven by Trust
@@ -120,7 +120,7 @@ const AboutSection = () => {
             <Typography
               component="p"
               sx={{
-                fontFamily: FontFamily.default,
+                fontFamily: FontFamily.secondary,
                 fontSize: { xs: "1.5rem", md: "2rem" },
                 fontWeight: 800,
                 fontStyle: "normal",

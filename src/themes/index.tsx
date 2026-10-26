@@ -15,10 +15,10 @@ const baseTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#A8E063",
-      light: "#D4F5A0",
-      dark: "#6DBF2E",
-      contrastText: "#3b6d11",
+      main: "#1B365D",
+      light: "#5B7496",
+      dark: "#334E68",
+      contrastText: "#0D1B2A",
     },
     secondary: {
       dark: "#090E1A",

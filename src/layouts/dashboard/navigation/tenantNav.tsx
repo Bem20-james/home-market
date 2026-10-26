@@ -17,7 +17,7 @@ import type { NavItem } from "./types";
 export const TENANT_NAV: NavItem[] = [
   {
     label: "Dashboard",
-    path: "/dashboard",
+    path: "/dashboard/tenant",
     icon: MdDashboard,
     children: [],
   },

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Header, Footer } from "../../components";
+import { Header, Footer } from "../../components/public";
 import { type ReactNode } from "react";
 
 import { Box } from "@mui/material";

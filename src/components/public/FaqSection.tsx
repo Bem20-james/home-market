@@ -184,7 +184,7 @@ const FAQSection = () => {
               fontFamily: FontFamily.secondary,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: COLORS.default,
+              color: COLORS.secondary,
               mb: 1.5,
             }}
           >

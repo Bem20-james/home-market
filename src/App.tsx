@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PublicRoutes from "./routes/public";
 import DashboardRoutes from "./routes/dashboard";
+import UserContextProvider from "./contexts/userContext";
 import "../index.css";
 
 function App() {
@@ -17,18 +18,18 @@ function App() {
   }, []);
 
   return (
-    <>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <ToastContainer />
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <ToastContainer />
+        <UserContextProvider>
           <Routes>
             <Route path="/*" element={<PublicRoutes />} />
             <Route path="/dashboard/*" element={<DashboardRoutes />} />
           </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
-    </>
+        </UserContextProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 export default App;

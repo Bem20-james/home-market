@@ -1,14 +1,20 @@
 import { Box, Grid, Stack, Typography, alpha } from "@mui/material";
 import { Palette } from "../../../config/colors";
 import { FontFamily } from "../../../config/fonts";
+import { COLORS } from "../../../config/colors";
 
-const LOGIN_HERO_IMAGE = "/auth/login.png";
+const LOGIN_HERO_IMAGE = "/auth/auth.jpg";
 const STATS = [
-  { value: "15k+", label: "Listings" },
+  { value: "10k+", label: "Listings" },
   { value: "98%", label: "Verified" },
   { value: "0%", label: "Agent Fees" },
-  { value: "16", label: "African Countries" },
+  { value: "9", label: "African Countries" },
 ];
+
+// Semi-transparent so the photo shows through the gradient.
+// Lower the alpha values to reveal more of the photo.
+const GRADIENT_TOP = alpha(Palette.primary.light, 0.75);
+const GRADIENT_BOTTOM = alpha(COLORS.primary, 0.5);
 
 const LeftPanel = () => {
   return (
@@ -52,14 +58,7 @@ const LeftPanel = () => {
             sx={{
               position: "absolute",
               inset: 0,
-              bgcolor: alpha(Palette.primary.main, 0.72),
-              background: `linear-gradient(180deg, ${alpha(
-                Palette.primary.dark ?? Palette.primary.main,
-                0.55,
-              )} 0%, ${alpha(Palette.primary.main, 0.78)} 60%, ${alpha(
-                Palette.primary.dark ?? Palette.primary.main,
-                0.85,
-              )} 100%)`,
+              background: `linear-gradient(180deg, ${GRADIENT_TOP} -50%, ${GRADIENT_BOTTOM} 100%)`,
             }}
           />
 
@@ -72,7 +71,7 @@ const LeftPanel = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              color: "#FFFFFF",
+              color: COLORS.white,
               p: { md: 5, lg: 6 },
             }}
           >
@@ -81,10 +80,9 @@ const LeftPanel = () => {
                 component="h1"
                 sx={{
                   fontSize: { xs: "2rem", md: "3rem", lg: "6rem" },
-                  fontWeight: 700,
-                  fontFamily: FontFamily.secondary,
+                  fontWeight: 300,
+                  fontFamily: FontFamily.primary,
                   lineHeight: 1,
-                  letterSpacing: "-0.5px",
                   mb: 2,
                 }}
               >
@@ -94,11 +92,11 @@ const LeftPanel = () => {
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "1rem",
+                  fontSize: "0.875rem",
                   fontFamily: FontFamily.default,
-                  fontWeight: 400,
+                  fontWeight: 500,
                   lineHeight: 1.6,
-                  color: alpha("#0D0D0D", 0.88),
+                  color: alpha(COLORS.neutral, 0.88),
                   mb: 3.5,
                 }}
               >
@@ -111,14 +109,21 @@ const LeftPanel = () => {
                   <Box
                     key={stat.label}
                     sx={{
-                      bgcolor: alpha("#0B2E0F", 0.32),
+                      bgcolor: alpha(COLORS.primary, 0.52),
                       borderRadius: "10px",
                       px: 2,
                       py: 1.25,
                       minWidth: 100,
                     }}
                   >
-                    <Typography sx={{ fontSize: "3rem", fontWeight: 700 }}>
+                    <Typography
+                      sx={{
+                        fontSize: "3rem",
+                        fontWeight: 700,
+                        fontFamily: FontFamily.primary,
+                        color: COLORS.white,
+                      }}
+                    >
                       {stat.value}
                     </Typography>
                     <Typography

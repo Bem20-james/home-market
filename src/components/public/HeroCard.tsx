@@ -9,7 +9,7 @@ const HeroCard = () => (
     sx={{
       position: "absolute",
       bottom: { md: "-28px", lg: "-28px" },
-      left: { md: "-32px", lg: "-40px" },
+      left: { md: "-32px", lg: "-150px" },
       zIndex: 10,
       borderRadius: "20px",
       bgcolor: "#f5f5f5",

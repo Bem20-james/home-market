@@ -4,7 +4,7 @@ import { LandlordOverview } from "../pages/landlord";
 const LandlordRoutes = () => {
   return (
     <Routes>
-      <Route path="/landlord/overview" element={<LandlordOverview />} />
+      <Route path="/landlord" element={<LandlordOverview />} />
     </Routes>
   );
 };

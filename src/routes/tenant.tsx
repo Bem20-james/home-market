@@ -4,7 +4,7 @@ import { TenantOverview } from "../pages/tenant";
 const TenantRoutes = () => {
   return (
     <Routes>
-      <Route path="/overview" element={<TenantOverview />} />
+      <Route path="/tenant" element={<TenantOverview />} />
     </Routes>
   );
 };

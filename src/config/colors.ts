@@ -1,19 +1,37 @@
 export const Palette = {
-  primary: {
-    main: "#A8E063",
-    light: "#D4F5A0",
-    default: "#6DBF2E",
-    dark: "#0F1C0A",
-    bg: "#3b6d11",
-  },
+ primary: {
+  main: "#1B365D",
+  light: "#5B7496",
+  default: "#334E68",
+  dark: "#081421",
+  bg: "#0D1B2A",
+  neutral: "#F4F7FA",
+},
+accent: {
+  main: "#EAB308",
+  light: "#FDE68A",
+  dark: "#A16207",
+},
 };
 
 export const COLORS = {
-  primary: "#A8E063",
-  light: "#d4f5a08f",
-  default: "#6DBF2E",
-  dark: "#0F1C0A",
-  bg: "#3b6d11",
+  primary: "#1B365D",
+  secondary: "#334E68",
+  tertiary: "#0D1B2A",
+  light: "#5B7496",
+
+  neutral: "#F4F7FA",
+  dark: "#081421",
+  bg: "#0D1B2A",
+  accent: "#EAB308",
+  accentL: "#FDE68A",
+
+
+  // primary: "#A8E063",
+  // light: "#d4f5a08f",
+  // default: "#6DBF2E",
+  // dark: "#0F1C0A",
+  //bg: "#3b6d11",
   bgHover: "#2d5509",
 
   background: "#0B0E14",
@@ -23,7 +41,7 @@ export const COLORS = {
 
   offWhite: "#c4e4f4",
   whiteSmoke: "#F5F5F6",
-  secondary: "#263238",
+  // secondary: "#263238",
   textSecondary: "#94A3B8",
 
   textMuted: "#64748B",

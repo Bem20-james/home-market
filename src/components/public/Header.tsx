@@ -35,10 +35,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isDefault = ["/", "/about"].includes(location.pathname);
-  const isListings = location.pathname.includes("/listings");
-  const btnBg = isDefault ? (scroll ? "outline" : "light") : "primary";
-  const variant = isDefault ? (!scroll ? "outline" : "secondary") : "secondary";
+  const btnBg = scroll ? "outline" : "light";
+  const variant = !scroll ? "outline" : "accent";
 
   return (
     <Box>
@@ -46,15 +44,19 @@ const Header = () => {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: scroll ? COLORS.light : "transparent",
+          backgroundColor: COLORS.secondary,
           backdropFilter: scroll ? "blur(12px)" : "none",
-          borderBottom: scroll ? "1px solid rgba(255,255,255,0.05)" : "none",
-          height: "70px",
+          borderRadius: "10px",
+          border: "none",
+          height: "60px",
+          width: "90vw",
           display: "flex",
+          // marginTop: "10px",
+          margin: "7px auto",
           justifyContent: "center",
-          boxShadow: scroll ? "0 6px 22px rgba(0,0,0,0.22)" : "none",
+          boxShadow: "0 6px 20px rgba(0, 0, 0, 0.12)",
           overflowX: "hidden",
-          width: "100vw",
+          overflowY: "hidden",
           left: 0,
           right: 0,
         }}
@@ -98,14 +100,11 @@ const Header = () => {
                     sx={{
                       textDecoration: "none",
                       color: isActive
-                        ? Palette.primary.default
-                        : isListings
-                          ? COLORS.light
-                          : COLORS.dark,
-                      fontWeight: 600,
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.05em",
-                      fontFamily: FontFamily.accent,
+                        ? Palette.primary.neutral
+                        : Palette.primary.bg,
+                      fontWeight: 500,
+                      fontSize: "0.85rem",
+                      fontFamily: FontFamily.default,
                       transition: "all 0.3s ease",
                       position: "relative",
                       "&:hover": {
@@ -146,7 +145,7 @@ const Header = () => {
                   to={"/auth/onboarding"}
                   shape="rounded"
                   fullWidth
-                  variant={isListings ? "success" : btnBg}
+                  variant={btnBg}
                   sx={{
                     width: { xs: "100%", sm: "auto" },
                     whiteSpace: "nowrap",
