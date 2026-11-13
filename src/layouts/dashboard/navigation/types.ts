@@ -8,7 +8,9 @@ export interface NavChildItem {
 
 export interface NavItem {
   label: string;
+  // For a group (an item with children) this is ignored - clicking it
+  // expands the group instead of navigating.
   path: string;
   icon: IconType;
-  children: NavChildItem[];
+  children?: NavChildItem[];
 }

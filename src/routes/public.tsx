@@ -1,7 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "../layouts/public";
-import { AboutPage, HomePage, ListingPage, LoginPage } from "../pages/public";
-import ScrollToTop from "../components/ScrollToTop";
+import {
+  AboutPage,
+  HomePage,
+  ListingPage,
+  LoginPage,
+  RegisterPage,
+} from "../pages/public";
+import ScrollToTop from "../utils/scrollToTop";
 
 const PublicRoutes = () => {
   return (
@@ -13,6 +19,7 @@ const PublicRoutes = () => {
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/listings" element={<ListingPage />} />
+        <Route path="/auth/onboarding" element={<RegisterPage />} />
       </Routes>
     </Layout>
   );

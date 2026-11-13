@@ -27,3 +27,37 @@ export interface AuthState {
   refreshToken: string | null;
   isAuthenticated: boolean;
 }
+
+
+export type Role = "tenant" | "landlord" | "agent";
+
+export type StepId = "role" | "personal" | "details" | "password" | "verify";
+
+export interface RegisterFormData {
+  role: Role | null;
+  // personal
+  firstName: string;
+  lastName: string;
+  email: string;
+  // landlord / agent details
+  city: string;
+  propertyCount: string; // landlord
+  agencyName: string; // agent
+  licenseNumber: string; // agent
+  // password
+  password: string;
+  confirmPassword: string;
+  // verify
+  otp: string;
+}
+
+export type FormErrors = Partial<Record<keyof RegisterFormData, string>>;
+
+export interface StepProps {
+  data: RegisterFormData;
+  errors: FormErrors;
+  onChange: <K extends keyof RegisterFormData>(
+    field: K,
+    value: RegisterFormData[K]
+  ) => void;
+}

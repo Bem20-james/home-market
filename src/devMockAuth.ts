@@ -9,7 +9,7 @@ const MOCK_USER = {
   last_name: "Tester",
   username: "test_user",
   email: "dev@example.com",
-  role: "tenant" as const, // switch to "tenant" to preview that layout
+  role: "landlord" as const, // switch to "tenant" to preview that layout
 };
 
 export function seedMockAuth(dispatch: AppDispatch) {

@@ -1,22 +1,10 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-  Typography,
-  Chip,
-} from "@mui/material";
+import { Box, Divider, Typography, Chip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { getNav } from "../../../utils/getNav";
+import { useNavigate } from "react-router-dom";
 import { Palette } from "../../../config/colors";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
-import { useSelector } from "react-redux";
-import { type RootState } from "../../../store";
+import NavigationMenu from "./NavigationMenu";
 
 export const DRAWER_WIDTH_OPEN = 248;
 export const DRAWER_WIDTH_CLOSED = 72;
@@ -43,13 +31,6 @@ const StyledDrawer = styled(MuiDrawer, {
 
 const SideNav = ({ open }: { open: boolean }) => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const user = useSelector((state: RootState) => state.auth.user);
-  // const navItems = getNav({ role: user?.role });
-  const navItems = getNav(user);
-
-  console.log("Auth User:", user);
 
   return (
     <StyledDrawer variant="permanent" open={open}>
@@ -109,82 +90,7 @@ const SideNav = ({ open }: { open: boolean }) => {
       <Divider sx={{ mx: 2, borderColor: "#f0f0f5" }} />
 
       <Box sx={{ flex: 1, py: 1.5, overflowY: "auto", overflowX: "hidden" }}>
-        <List disablePadding>
-          {navItems.map((item, index) => {
-            const isActive = location.pathname === item.path;
-            const Icon = item.icon;
-
-            return (
-              <ListItem key={index} disablePadding sx={{ px: 1.5, py: 0.3 }}>
-                <Link
-                  to={item.path}
-                  style={{ textDecoration: "none", width: "100%" }}
-                >
-                  <ListItemButton
-                    sx={{
-                      borderRadius: "10px",
-                      minHeight: 44,
-                      px: open ? 1.5 : 1,
-                      justifyContent: open ? "flex-start" : "center",
-                      backgroundColor: isActive
-                        ? Palette.primary.main
-                        : "transparent",
-                      position: "relative",
-                      overflow: "hidden",
-                      transition: "all 0.2s ease",
-                      "&::before": isActive
-                        ? {}
-                        : {
-                            content: '""',
-                            position: "absolute",
-                            inset: 0,
-                            borderRadius: "10px",
-                            background: `${Palette.primary.main}10`,
-                            opacity: 0,
-                            transition: "opacity 0.2s",
-                          },
-                      "&:hover": {
-                        backgroundColor: isActive
-                          ? Palette.primary.main
-                          : `${Palette.primary.main}10`,
-                        "&::before": { opacity: 1 },
-                      },
-                    }}
-                  >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 1.5 : 0,
-                        justifyContent: "center",
-                        color: isActive ? "#fff" : Palette.primary.main,
-                      }}
-                    >
-                      {Icon && <Icon fontSize={open ? "medium" : "large"} />}
-                    </ListItemIcon>
-
-                    {open && (
-                      <ListItemText
-                        primary={
-                          <Typography
-                            component="span"
-                            sx={{
-                              fontSize: "0.85rem",
-                              fontWeight: isActive ? 600 : 500,
-                              color: isActive ? "#fff" : "#3d3d5c",
-                              letterSpacing: "0.01em",
-                            }}
-                          >
-                            {item.label}
-                          </Typography>
-                        }
-                      />
-                    )}
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            );
-          })}
-        </List>
+        <NavigationMenu open={open} />
       </Box>
 
       <Divider sx={{ mx: 2, borderColor: "#f0f0f5" }} />
@@ -224,7 +130,6 @@ const SideNav = ({ open }: { open: boolean }) => {
                 }}
               />
             </Box>
-
             <Typography
               sx={{
                 fontSize: "0.75rem",

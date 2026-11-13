@@ -1,13 +1,5 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Link,
-  Stack,
-  Typography,
-} from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
+import { Box, Grid, Link, Stack, Typography } from "@mui/material";
+// import GoogleIcon from "@mui/icons-material/Google";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
@@ -166,7 +158,7 @@ const LoginPage = () => {
               Login
             </CustomButton>
 
-            <Divider
+            {/* <Divider
               sx={{
                 my: "18px",
                 "&::before, &::after": { borderColor: "#E6E6E6" },
@@ -200,7 +192,7 @@ const LoginPage = () => {
               }}
             >
               Sign in with Google
-            </Button>
+            </Button> */}
 
             <Box sx={{ textAlign: "center", mt: "20px" }}>
               <Typography

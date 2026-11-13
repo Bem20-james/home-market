@@ -1,14 +1,12 @@
-import {
-  MdDashboard,
-  MdHomeWork,
-  MdAddHome,
-  MdVisibility,
-  MdBookOnline,
-  MdPayments,
-  MdVerifiedUser,
-  MdSettings,
-} from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import type { NavItem } from "./types";
+import {
+  HolidayVillageOutlined,
+  FavoriteOutlined,
+  AssignmentOutlined,
+  PaymentsOutlined,
+  SettingsOutlined,
+} from "@mui/icons-material";
 
 // NOTE: this currently mirrors LANDLORD_NAV item-for-item (including
 // "Add Property" / "View Properties", which reads like a landlord-only
@@ -22,44 +20,34 @@ export const TENANT_NAV: NavItem[] = [
     children: [],
   },
   {
-    label: "My Properties",
-    path: "#",
-    icon: MdHomeWork,
-    children: [
-      {
-        label: "Add Property",
-        path: "/dashboard/add/property",
-        icon: MdAddHome,
-      },
-      {
-        label: "View Properties",
-        path: "/dashboard/view/properties",
-        icon: MdVisibility,
-      },
-    ],
+    label: "My properties",
+    path: "/dashboard/tenant/my-properties",
+    icon: HolidayVillageOutlined,
+    children: [],
   },
   {
-    label: "Bookings",
-    path: "/dashboard/view/bookings",
-    icon: MdBookOnline,
+    label: "Saved",
+    path: "/dashboard/tenant/saved-properties",
+    icon: FavoriteOutlined,
+    children: [],
+  },
+  {
+    label: "Inspections",
+    path: "/dashboard/tenant/inspections",
+    icon: AssignmentOutlined,
     children: [],
   },
   {
     label: "Payments",
-    path: "/dashboard/admin/customers",
-    icon: MdPayments,
+    path: "/dashboard/tenant/payments",
+    icon: PaymentsOutlined,
     children: [],
   },
-  {
-    label: "Verifications",
-    path: "#",
-    icon: MdVerifiedUser,
-    children: [],
-  },
+
   {
     label: "Settings",
-    path: "#",
-    icon: MdSettings,
+    path: "/dashboard/tenant/settings",
+    icon: SettingsOutlined,
     children: [],
   },
 ];
