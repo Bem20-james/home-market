@@ -29,7 +29,7 @@ export interface AuthState {
 }
 
 
-export type Role = "tenant" | "landlord" | "agent";
+export type Role = "tenant" | "developers" | "agent";
 
 export type StepId = "role" | "personal" | "details" | "password" | "verify";
 

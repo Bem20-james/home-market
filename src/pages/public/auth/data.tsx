@@ -28,17 +28,17 @@ export const OPTIONS: { group: string; items: RoleOption[] }[] = [
     group: "I'm listing a property",
     items: [
       {
-        value: "landlord",
-        title: "Landlord",
-        description:
-          "Own a property? Find reliable tenants and manage enquiries.",
-        icon: <ApartmentRoundedIcon />,
-      },
-      {
         value: "agent",
         title: "Agent",
-        description: "Represent owners and list properties on their behalf.",
+        description:
+          "Own a property? Represent owners? Find reliable tenants, manage enquiries or list properies on behalf of owners.",
         icon: <SupportAgentRoundedIcon />,
+      },
+      {
+        value: "developers",
+        title: "Developers",
+        description: "Represent owners and list properties on their behalf.",
+        icon: <ApartmentRoundedIcon />,
       },
     ],
   },

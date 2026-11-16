@@ -38,7 +38,7 @@ const VERIFY: StepConfig = {
 // Steps AFTER the role selection, per role
 export const STEPS_BY_ROLE: Record<Role, StepConfig[]> = {
   tenant: [PERSONAL, PASSWORD, VERIFY],
-  landlord: [
+  developers: [
     PERSONAL,
     {
       id: "details",
