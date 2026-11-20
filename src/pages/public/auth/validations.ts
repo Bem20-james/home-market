@@ -22,7 +22,7 @@ export const validateStep = (
 
     case "details":
       if (!data.city.trim()) e.city = "Enter your city.";
-      if (data.role === "landlord" && !data.propertyCount.trim())
+      if (data.role === "developers" && !data.propertyCount.trim())
         e.propertyCount = "Enter how many properties you manage.";
       if (data.role === "agent") {
         if (!data.agencyName.trim()) e.agencyName = "Enter your agency name.";

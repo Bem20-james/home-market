@@ -18,6 +18,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Palette } from "../../../config/colors";
 import { useUserContext } from "../../../contexts";
 import { getNav } from "../../../utils/getNav";
+import NavIcon from "./NavIcon";
 import type { NavItem } from "../navigation/types";
 
 interface NavigationMenuProps {
@@ -113,7 +114,6 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
     <>
       <List disablePadding>
         {navItems.map((item, index) => {
-          const Icon = item.icon;
           const children = item.children ?? [];
           const rowKey = `${item.label}-${index}`;
 
@@ -132,7 +132,7 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
                   sx={rowSx(isActive, open)}
                 >
                   <ListItemIcon sx={iconSx(isActive, open)}>
-                    <Icon size={20} />
+                    <NavIcon icon={item.icon} size={20} />
                   </ListItemIcon>
                   {open && (
                     <ListItemText
@@ -176,7 +176,7 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
                   sx={rowSx(isActive, open)}
                 >
                   <ListItemIcon sx={iconSx(isActive, open)}>
-                    <Icon size={20} />
+                    <NavIcon icon={item.icon} size={20} />
                   </ListItemIcon>
                   {open && (
                     <>
@@ -211,7 +211,6 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
                 >
                   <List disablePadding id={groupId} aria-label={item.label}>
                     {children.map((child) => {
-                      const ChildIcon = child.icon;
                       const childActive = pathname === child.path;
 
                       return (
@@ -228,7 +227,7 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
                             sx={rowSx(childActive, true, true)}
                           >
                             <ListItemIcon sx={iconSx(childActive, true)}>
-                              <ChildIcon size={18} />
+                              <NavIcon icon={child.icon} size={18} />
                             </ListItemIcon>
                             <ListItemText
                               primary={
@@ -283,8 +282,6 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
           {flyout?.item.label}
         </ListSubheader>
         {flyout?.item.children?.map((child) => {
-          const ChildIcon = child.icon;
-
           return (
             <MenuItem
               key={child.path}
@@ -299,7 +296,7 @@ const NavigationMenu = ({ open, onNavigate }: NavigationMenuProps) => {
               <ListItemIcon
                 sx={{ color: Palette.primary.main, minWidth: 0, mr: 1.5 }}
               >
-                <ChildIcon size={18} />
+                <NavIcon icon={child.icon} size={18} />
               </ListItemIcon>
               <ListItemText
                 primary={

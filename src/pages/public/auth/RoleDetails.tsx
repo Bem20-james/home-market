@@ -42,7 +42,7 @@ const RoleDetailsStep = ({ data, errors, onChange }: StepProps) => (
       </>
     )}
 
-    {data.role === "landlord" && (
+    {data.role === "developers" && (
       <FieldError error={errors.propertyCount}>
         <CustomInput
           fullWidth
